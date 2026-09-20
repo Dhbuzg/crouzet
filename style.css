@@ -23,3 +23,40 @@ nav a:hover{text-decoration-thickness:1px}
   .platter-name{margin-top:0}
 }
 
+
+/* Figma Version_06: title separators and editorial layout (1440 px reference). */
+main>section{margin-top:150px}
+section h2{position:relative;display:block;height:70px;margin-left:0!important;padding-left:40.5714286%;--line-width:37.5%}
+section h2 span{position:absolute;left:var(--line-width);top:36px;width:23px;text-align:right;font-size:20px;line-height:20px}
+.heading-line{position:absolute;left:0;top:50.75px;width:var(--line-width);height:.5px;object-fit:fill}
+.markets h2{padding-left:60.8571429%;--line-width:57.7857143%}
+.platters h2{padding-left:20.2857143%;--line-width:17.2142857%}
+.history-content{justify-content:start;column-gap:11.5714286%;margin-top:101px;align-items:start}
+.history-content>p{margin-top:461px;transform:translateY(-50%)}
+.contact-content{margin-top:101px}
+.markets table{width:443px;margin:101px 0 0 34.1428571%;table-layout:fixed}
+.markets th,.markets td{height:80px;padding:0;vertical-align:top;position:relative;line-height:80px}
+.markets th{width:284px;text-align:left;font-weight:600}
+.markets td{width:159px;text-align:center;font-weight:300}
+.market-day{display:block;width:97px;text-align:center}
+.market-time{position:absolute;left:70px;top:21px;width:52px;text-align:center;font-weight:200;font-style:italic}
+.markets table{margin-bottom:21px}
+@media(min-width:761px) and (max-width:1439px){
+ section h2 span{font-size:20px;top:calc(clamp(42px,4.861vw,70px)*.5142857)}
+ section h2{height:clamp(42px,4.861vw,70px)}
+ .heading-line{top:calc(clamp(42px,4.861vw,70px)*.7285714)}
+ .history-content>p{margin-top:min(32.014vw,461px)}
+ .markets table{margin-left:auto;margin-right:auto}
+}
+@media(max-width:760px){
+ .history h2,.markets h2,.platters h2,.contact h2{height:auto;min-height:42px;padding-left:18%;font-size:clamp(32px,8vw,42px);--line-width:calc(18% - 34px)}
+ section h2 span{top:18px;width:20px;font-size:14px;line-height:20px}
+ .heading-line{top:32px}
+ .history-content{margin-top:55px;column-gap:0}
+ .history-content>p{margin-top:0;transform:none}
+ .contact-content{margin-top:55px}
+ .markets table{width:100%;max-width:443px;margin:55px auto 21px}
+ .markets th{width:55%}.markets td{width:45%}
+ .market-day{width:90px}.market-time{left:60px;width:45px}
+}
+
