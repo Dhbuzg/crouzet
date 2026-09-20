@@ -50,3 +50,17 @@ Les droits sur les photos restent ceux de leurs ayants droit. Les polices conser
 ## Interaction de la galerie
 Le déplacement horizontal de la souris sur toute la section sélectionne les plateaux successivement, y compris dans les espaces vides. Une tolérance de 8 pixels aux frontières évite les oscillations. La navigation clavier et le défilement tactile sont conservés.
 
+
+## Optimisation PageSpeed (20 septembre 2026)
+
+Rapport initial bureau : performance 76, LCP 6,3 s, environ 11 925 Kio transférés. Les photos PNG étaient la principale charge réseau.
+
+- Images WebP de qualité 82, avec plusieurs résolutions et `srcset`/`sizes`. Les originaux PNG sont conservés pour les futures retouches mais ne sont plus chargés par la page.
+- Photo principale prioritaire, décodage asynchrone, chargement différé des photos plus bas.
+- Polices Inter et Newsreader converties en WOFF2 avec caractères latins étendus, ponctuation et monnaies (français inclus). Les TTF originaux sont conservés mais ne sont plus chargés.
+- Déclarations de polices regroupées au début de `style.css` pour éviter une seconde requête CSS bloquante. `assets/fonts.css` reste une référence, non liée par la page. Préchargement de Gambetta Medium Italic et Inter Light.
+- Aucun changement des règles de mise en page ni du JavaScript des animations.
+
+Les durées de cache HTTP de GitHub Pages relèvent de cet hébergement. Ajouter un fichier `.htaccess` ou `_headers` ici ne les modifierait pas. Les réductions de poids diminuent toutefois fortement le coût des rechargements.
+
+Pour mesurer le nouveau score PageSpeed, envoyer ces modifications sur GitHub, attendre le déploiement Pages puis relancer le rapport. Aucun nouveau score public n’a été mesuré avant publication.
