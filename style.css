@@ -79,6 +79,8 @@ section h2{position:relative;display:block;height:70px;margin-left:0!important;p
 section h2 span{position:absolute;left:var(--line-width);top:36px;width:23px;text-align:right;font-size:20px;line-height:20px}
 .heading-line{position:absolute;left:0;top:50.75px;width:var(--line-width);height:.5px;object-fit:fill}
 .markets h2{padding-left:60.8571429%;--line-width:57.7857143%}
+/* Draw the half-pixel rule directly to avoid subpixel SVG rasterization. */
+.markets .heading-line{height:1px;background:#000;transform:scaleY(.5);transform-origin:top}
 .platters h2{padding-left:20.2857143%;--line-width:17.2142857%}
 .history-content{justify-content:start;column-gap:11.5714286%;margin-top:101px;align-items:start}
 .history-content>p{margin-top:461px;transform:translateY(-50%)}
