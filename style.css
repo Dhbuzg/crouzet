@@ -112,3 +112,7 @@ section h2 span{position:absolute;left:var(--line-width);top:36px;width:23px;tex
 }
 
 
+
+/* Prevent selection highlighting on the presentation content. */
+body{-webkit-user-select:none;user-select:none}
+input,textarea,[contenteditable=true]{-webkit-user-select:text;user-select:text}
