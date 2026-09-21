@@ -120,7 +120,7 @@ input,textarea,[contenteditable=true]{-webkit-user-select:text;user-select:text}
 /* Figma Version_08: 1440 px reference, with the existing carousel preserved. */
 .truck-photo{width:39.1428571%;margin-left:50.7142857%;margin-top:-6px}
 .truck-photo .image-window{aspect-ratio:548/632}
-.truck-photo img{object-fit:fill;object-position:bottom}
+.truck-photo img{object-fit:cover;object-position:center}
 .truck-photo figcaption{text-align:right}
 .markets table{margin-bottom:0}
 .market-notes{margin:75px 0 0 20.2857143%;font-size:15px;line-height:22.5px}
