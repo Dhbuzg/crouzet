@@ -64,3 +64,15 @@ Rapport initial bureau : performance 76, LCP 6,3 s, environ 11 925 Kio transfér
 Les durées de cache HTTP de GitHub Pages relèvent de cet hébergement. Ajouter un fichier `.htaccess` ou `_headers` ici ne les modifierait pas. Les réductions de poids diminuent toutefois fortement le coût des rechargements.
 
 Pour mesurer le nouveau score PageSpeed, envoyer ces modifications sur GitHub, attendre le déploiement Pages puis relancer le rapport. Aucun nouveau score public n’a été mesuré avant publication.
+
+## Référencement (22 septembre 2026)
+
+Le titre, la description et les aperçus de partage ciblent les fromages et plateaux dans les Landes. Le logo et la date 2001 sont conservés. Les données structurées décrivent l’organisation, ses coordonnées et ses communes desservies, sans présenter l’adresse privée comme une boutique. Aucun horaire supplémentaire ni tarif n’est inventé. Le contenu visible, les styles et les animations sont inchangés.
+
+- Publier aussi robots.txt et sitemap.xml à la racine du domaine cremeriecrouzet.fr. Le sitemap ne contient que la page canonique : les ancres des sections ne sont pas des pages distinctes.
+- Après publication, vérifier le domaine dans Google Search Console, transmettre https://cremeriecrouzet.fr/sitemap.xml et demander une nouvelle indexation de la page d’accueil. Cette configuration nécessite l’accès au compte et, pour la propriété de domaine, au DNS.
+- Configurer Google Business Profile selon l’activité réelle et son éligibilité, sans afficher l’adresse privée comme un magasin ouvert au public.
+- Demander progressivement des mentions auprès des marchés, communes et partenaires locaux.
+- Les prix affichés sont encore « ?€ » : les renseigner lorsque les tarifs définitifs sont disponibles (aucune modification faite dans cette intervention).
+
+Si le domaine change, mettre à jour ensemble la canonical, les URL de partage, le JSON-LD, robots.txt et sitemap.xml. Aucun compte Google ni déploiement n’a été modifié par cette intervention.
