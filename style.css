@@ -80,7 +80,7 @@ section h2 span{position:absolute;left:var(--line-width);top:36px;width:23px;tex
 .heading-line{position:absolute;left:0;top:50.75px;width:var(--line-width);height:.5px;object-fit:fill}
 .markets h2{padding-left:60.8571429%;--line-width:57.7857143%}
 /* Draw the half-pixel rule directly to avoid subpixel SVG rasterization. */
-.markets .heading-line{height:1px;background:#000;transform:scaleY(.5);transform-origin:top}
+.markets .heading-line,.platters .heading-line{height:1px;background:#000;transform:scaleY(.5);transform-origin:top}
 .platters h2{padding-left:20.2857143%;--line-width:17.2142857%}
 .history-content{justify-content:start;column-gap:11.5714286%;margin-top:101px;align-items:start}
 .history-content>p{margin-top:461px;transform:translateY(-50%)}
@@ -116,3 +116,19 @@ section h2 span{position:absolute;left:var(--line-width);top:36px;width:23px;tex
 /* Prevent selection highlighting on the presentation content. */
 body{-webkit-user-select:none;user-select:none}
 input,textarea,[contenteditable=true]{-webkit-user-select:text;user-select:text}
+
+/* Figma Version_08: 1440 px reference, with the existing carousel preserved. */
+.truck-photo{width:39.1428571%;margin-left:50.7142857%;margin-top:-6px}
+.truck-photo .image-window{aspect-ratio:548/632}
+.truck-photo img{object-fit:fill;object-position:bottom}
+.truck-photo figcaption{text-align:right}
+.markets table{margin-bottom:0}
+.market-notes{margin:75px 0 0 20.2857143%;font-size:15px;line-height:22.5px}
+@media(min-width:761px){
+ .brand{margin-top:clamp(141px,15.5555556vw,224px);height:clamp(319px,41.3888889vw,596px)}
+ .brand p{margin-top:-18px}
+}
+@media(max-width:760px){
+ .truck-photo{width:85%;margin:55px 0 0 auto}
+ .market-notes{margin:65px 0 0;font-size:13px;line-height:1.5}
+}

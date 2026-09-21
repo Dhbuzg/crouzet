@@ -78,7 +78,7 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
       entry.target.remove();
     }
   }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
-  document.querySelectorAll('.hero-photo figcaption, .history-content figcaption').forEach(caption => {
+  document.querySelectorAll('.hero-photo figcaption, .history-content figcaption, .truck-photo figcaption').forEach(caption => {
     caption.classList.add('caption-pending');
     const marker = document.createElement('span');
     marker.className = 'caption-trigger';
