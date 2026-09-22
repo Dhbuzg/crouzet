@@ -61,13 +61,13 @@ nav a:hover{text-decoration-thickness:1px}
 
 /* Shared baseline below every image; the gallery height follows its content. */
 @media(min-width:761px){
-  .platter-gallery{display:grid;height:auto;container-type:inline-size;--step:min(1.875vw,27px)}
-  .platter{grid-area:1/1;position:relative;align-self:start;left:auto;top:auto;margin-left:calc(var(--i)*14.2857%);padding-top:calc(var(--i)*var(--step));width:28.5%}
+  .platter-gallery{display:grid;height:auto;container-type:inline-size;--step:2.285714286cqw}
+  .platter{grid-area:1/1;position:relative;align-self:start;left:auto;top:auto;margin-left:calc(var(--i)*15.428571429%);padding-top:calc(var(--i)*var(--step));width:22.857142857%}
   .platter button{transform:scale(1);transform-origin:center top;transition:transform .5s cubic-bezier(.22,1,.36,1)}
   .platter:first-child button{transform-origin:left top}
   .platter:last-child button{transform-origin:right top}
   .platter.is-active button{transform:scale(1.045)}
-  .platter-info{margin-top:calc((5 - var(--i))*var(--step) + 1.603125cqw + 20px);transform:none;clip-path:inset(0 0 100% 0);transition:clip-path .65s cubic-bezier(.22,1,.36,1),opacity .4s}
+  .platter-info{margin-top:calc((5 - var(--i))*var(--step) + 1.285714286cqw + 12px);transform:none;clip-path:inset(0 0 100% 0);transition:clip-path .65s cubic-bezier(.22,1,.36,1),opacity .4s}
   .platter.is-active .platter-info{transform:none;clip-path:inset(0)}
   .platter-name{margin-top:0}
 }
