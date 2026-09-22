@@ -78,7 +78,7 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
       entry.target.remove();
     }
   }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
-  document.querySelectorAll('.hero-photo figcaption, .history-content figcaption, .truck-photo figcaption').forEach(caption => {
+  document.querySelectorAll('.hero-photo figcaption, .history-content figcaption').forEach(caption => {
     caption.classList.add('caption-pending');
     const marker = document.createElement('span');
     marker.className = 'caption-trigger';
@@ -93,3 +93,76 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
     document.querySelectorAll('.caption-trigger').forEach(marker => marker.remove());
   });
 }
+
+// Align thin rules to physical pixels, including after fonts load or zoom changes.
+const headingRules = [...document.querySelectorAll('.heading-line')];
+function alignHeadingRules() {
+  const ratio = window.devicePixelRatio || 1;
+  for (const line of headingRules) {
+    line.style.transform = 'none';
+    const y = line.getBoundingClientRect().top + window.scrollY;
+    line.style.height = `${Math.max(1, Math.round(ratio)) / ratio}px`;
+    line.style.transform = `translateY(${Math.round(y * ratio) / ratio - y}px)`;
+  }
+}
+let rulesFrame;
+function scheduleRuleAlignment() {
+  cancelAnimationFrame(rulesFrame);
+  rulesFrame = requestAnimationFrame(alignHeadingRules);
+}
+window.addEventListener('resize', scheduleRuleAlignment);
+if ('ResizeObserver' in window) {
+  const rulesObserver = new ResizeObserver(scheduleRuleAlignment);
+  document.querySelectorAll('main, main > section, .hero-photo').forEach(node => rulesObserver.observe(node));
+}
+document.fonts.ready.then(scheduleRuleAlignment);
+scheduleRuleAlignment();
+
+// A deliberate navigation duration, independent of the browser's smooth scroll.
+let navigationFrame;
+function cancelNavigation() {
+  cancelAnimationFrame(navigationFrame);
+  navigationFrame = null;
+}
+for (const type of ['wheel', 'touchstart', 'pointerdown']) {
+  window.addEventListener(type, cancelNavigation, { passive: true });
+}
+window.addEventListener('keydown', event => {
+  if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ', 'Escape', 'Tab'].includes(event.key)) cancelNavigation();
+});
+window.addEventListener('popstate', cancelNavigation);
+window.addEventListener('resize', cancelNavigation);
+reducedMotion.addEventListener('change', cancelNavigation);
+document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
+  link.addEventListener('click', event => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    const target = document.querySelector(link.hash);
+    if (!target) return;
+    event.preventDefault();
+    cancelNavigation();
+    const start = window.scrollY;
+    const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
+    const end = Math.max(0, Math.min(target.getBoundingClientRect().top + start - padding,
+      document.documentElement.scrollHeight - window.innerHeight));
+    if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+    const finish = () => {
+      window.scrollTo({ top: end, behavior: 'instant' });
+      const hadTabIndex = target.hasAttribute('tabindex');
+      if (!hadTabIndex) target.setAttribute('tabindex', '-1');
+      target.focus({ preventScroll: true });
+      if (!hadTabIndex) target.addEventListener('blur', () => target.removeAttribute('tabindex'), { once: true });
+      navigationFrame = null;
+    };
+    if (reducedMotion.matches || Math.abs(end - start) < 1) { finish(); return; }
+    const duration = Math.min(1200, 800 + Math.abs(end - start) * .08);
+    const began = performance.now();
+    const step = now => {
+      const progress = Math.min(1, (now - began) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      window.scrollTo({ top: start + (end - start) * eased, behavior: 'instant' });
+      if (progress < 1) navigationFrame = requestAnimationFrame(step);
+      else finish();
+    };
+    navigationFrame = requestAnimationFrame(step);
+  });
+});

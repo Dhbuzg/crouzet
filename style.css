@@ -78,7 +78,7 @@ main>section{margin-top:150px}
 section h2{position:relative;display:block;height:70px;margin-left:0!important;padding-left:40.5714286%;--line-width:37.5%}
 section h2 span{position:absolute;left:var(--line-width);top:36px;width:23px;text-align:right;font-size:20px;line-height:20px}
 /* A full CSS pixel with reduced opacity keeps every rule visible at all widths. */
-.heading-line{position:absolute;display:block;left:0;top:50.75px;width:var(--line-width);height:1px;background:rgb(0 0 0 / 50%);pointer-events:none}
+.heading-line{position:absolute;display:block;left:0;top:50.75px;width:calc(var(--line-width) - 20px);height:1px;background:rgb(0 0 0 / 50%);pointer-events:none}
 .markets h2{padding-left:60.8571429%;--line-width:57.7857143%}
 
 
@@ -101,7 +101,7 @@ section h2 span{position:absolute;left:var(--line-width);top:36px;width:23px;tex
  .markets table{margin-left:auto;margin-right:auto}
 }
 @media(max-width:760px){
- .history h2,.markets h2,.platters h2,.contact h2{height:auto;min-height:42px;padding-left:18%;font-size:clamp(32px,8vw,42px);--line-width:calc(18% - 34px)}
+ .history h2,.markets h2,.platters h2,.contact h2{height:auto;min-height:42px;padding-left:max(18%,60px);font-size:clamp(32px,8vw,42px);--line-width:max(26px,calc(18% - 34px))}
  section h2 span{top:18px;width:20px;font-size:14px;line-height:20px}
  .heading-line{top:32px}
  .history-content{margin-top:55px;column-gap:0}
@@ -119,10 +119,6 @@ body{-webkit-user-select:none;user-select:none}
 input,textarea,[contenteditable=true]{-webkit-user-select:text;user-select:text}
 
 /* Figma Version_08: 1440 px reference, with the existing carousel preserved. */
-.truck-photo{width:39.1428571%;margin-left:50.7142857%;margin-top:50px}
-.truck-photo .image-window{aspect-ratio:548/632}
-.truck-photo img{object-fit:cover;object-position:center}
-.truck-photo figcaption{text-align:right}
 .markets table{margin-bottom:0}
 .market-notes{margin:75px 0 0 20.2857143%;font-size:15px;line-height:22.5px}
 @media(min-width:761px){
@@ -130,7 +126,6 @@ input,textarea,[contenteditable=true]{-webkit-user-select:text;user-select:text}
  .brand p{margin-top:-18px}
 }
 @media(max-width:760px){
- .truck-photo{width:85%;margin:55px 0 0 auto}
  .market-notes{margin:65px 0 0;font-size:13px;line-height:1.5}
 }
 
