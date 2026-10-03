@@ -168,3 +168,9 @@ main{--illustration-scale:min(1,calc((100vw - 40px) / 1400px))}
  .illustration-fox{top:-80px}
  .market-notes{font-size:16px;line-height:1.5}
 }
+/* Version 14: persistent navigation and room above anchor destinations. */
+html{scroll-padding-top:60px}
+body>nav{position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:50;width:100%;max-width:1440px;height:50px;padding:0 20px;align-items:center;background:rgb(246 243 238 / 75%)}
+header{padding-top:54px}
+.contact{--contact-height:min(1027px,calc(100svh - 60px));min-height:calc(100svh - 60px)}
+@media(max-width:760px){html{scroll-padding-top:90px}.contact{--contact-height:min(1027px,calc(100svh - 90px));min-height:calc(100svh - 90px)}body>nav{height:80px;padding:8px 18px}header{padding-top:92px}}

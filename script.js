@@ -133,7 +133,7 @@ window.addEventListener('keydown', event => {
 window.addEventListener('popstate', cancelNavigation);
 window.addEventListener('resize', cancelNavigation);
 reducedMotion.addEventListener('change', cancelNavigation);
-document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
   link.addEventListener('click', event => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = document.querySelector(link.hash);
@@ -154,11 +154,11 @@ document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
       navigationFrame = null;
     };
     if (reducedMotion.matches || Math.abs(end - start) < 1) { finish(); return; }
-    const duration = Math.min(1200, 800 + Math.abs(end - start) * .08);
+    const duration = 750;
     const began = performance.now();
     const step = now => {
       const progress = Math.min(1, (now - began) / duration);
-      const eased = 1 - Math.pow(1 - progress, 3);
+      const eased = progress < .5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
       window.scrollTo({ top: start + (end - start) * eased, behavior: 'instant' });
       if (progress < 1) navigationFrame = requestAnimationFrame(step);
       else finish();
