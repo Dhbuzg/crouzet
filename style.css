@@ -131,3 +131,28 @@ input,textarea,[contenteditable=true]{-webkit-user-select:text;user-select:text}
 
 /* Version 08 refinements: paragraph at x731 / y2289 on the 1440px layout. */
 @media(min-width:761px){.history-content>p{margin-left:1px;width:calc(100% - 1px);margin-top:min(31.875vw,459px)}}
+
+/* Figma Version_13: illustrations sit behind the editorial content. */
+header,main{position:relative;isolation:isolate;overflow-x:clip}
+body{overflow-x:clip}
+.illustration{position:absolute;pointer-events:none;z-index:-1}
+.illustration img{width:auto;height:auto;max-width:none;object-fit:contain}
+.illustration-brand{left:-3.0555556%;top:-25px}
+.illustration-brand img{transform:scale(var(--illustration-scale));transform-origin:top left}
+header{--illustration-scale:min(1,calc(100vw / 1440px))}
+.history,.platters,.contact{position:relative;isolation:isolate}
+.contact{min-height:calc(100svh - 35px)}
+.illustration-crow{left:11.7142857%;top:-157px}
+.illustration-crow img,.illustration-fox img{transform:scale(var(--illustration-scale));transform-origin:top left}
+main{--illustration-scale:min(1,calc((100vw - 40px) / 1400px))}
+.illustration-fox{left:23.9285714%;top:-270px}
+.market-notes{font-size:20px;line-height:22.5px}
+.market-time{top:26px}
+@media(max-width:760px){
+ header{--illustration-scale:calc(100vw / 600px)}
+ main{--illustration-scale:calc((100vw - 36px) / 1400px)}
+ .illustration-brand{top:0}
+ .illustration-crow{top:-55px}
+ .illustration-fox{top:-80px}
+ .market-notes{font-size:16px;line-height:1.5}
+}
