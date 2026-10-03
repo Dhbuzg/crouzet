@@ -57,6 +57,8 @@ figure{position:relative}.image-window{position:relative;z-index:2;background:va
 
 
 nav a:hover{text-decoration-thickness:1px}
+/* Navigation aligned with the 20 px outer margin of the Figma layout. */
+@media(min-width:761px){nav{padding-top:16px}}
 
 
 /* Shared baseline below every image; the gallery height follows its content. */
@@ -122,7 +124,7 @@ input,textarea,[contenteditable=true]{-webkit-user-select:text;user-select:text}
 .markets table{margin-bottom:0}
 .market-notes{margin:75px 0 0 20.2857143%;font-size:15px;line-height:22.5px}
 @media(min-width:761px){
- .brand{margin-top:clamp(141px,15.5555556vw,224px);height:clamp(319px,41.3888889vw,596px)}
+ .brand{margin-top:calc(clamp(141px,15.5555556vw,224px) + 30px);height:clamp(319px,41.3888889vw,596px)}
  .brand p{margin-top:-18px}
 }
 @media(max-width:760px){
