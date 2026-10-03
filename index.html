@@ -54,10 +54,22 @@
 
   <link rel="preload" href="assets/fonts/gambetta-1.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/google-1.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=9c0ef374e4da">
+  <link rel="stylesheet" href="style.css?v=6faede82c27a">
   <script src="script.js?v=0e19400cc2e1" defer></script>
 </head>
 <body>
+<svg class="illustration-filters" aria-hidden="true" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="illustration-texture" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".999" numOctaves="3" seed="452" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="brand-texture" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".999" numOctaves="3" seed="9766" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
 <a class="skip-link" href="#histoire">Aller au contenu</a>
 <header id="accueil">
   <div class="illustration illustration-brand" aria-hidden="true"><img src="assets/corbeau-renard.svg" alt=""></div>
