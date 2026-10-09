@@ -3,7 +3,6 @@ const gallery = document.querySelector('.platter-gallery');
 const gallerySection = document.querySelector('#plateaux');
 const mobileLayout = matchMedia('(max-width: 760px)');
 let selectedCard = null;
-let lastPointerX = null;
 function selectCard(card) {
   selectedCard = card;
   for (const item of cards) {
@@ -14,39 +13,38 @@ function selectCard(card) {
   }
 }
 
-// Use one stable surface: overlapping cards must never decide which card is active.
-// The section includes the empty space above, below and between the photographs.
-function selectAtPosition(clientX, stabilize = true) {
-  const bounds = gallery.getBoundingClientRect();
-  const x = Math.max(0, Math.min(bounds.width - 1, clientX - bounds.left));
-  const zoneWidth = bounds.width / cards.length;
-  const index = Math.floor(x / zoneWidth);
-  const current = cards.indexOf(selectedCard);
-  // A small dead band prevents flicker when the pointer rests at a boundary.
-  if (stabilize && current >= 0 && Math.abs(index - current) === 1) {
-    const boundary = Math.max(index, current) * zoneWidth;
-    if (Math.abs(x - boundary) < 8) return;
+// Resolve hover from the visible image stack, with a 24 px surrounding margin.
+// Use the original stack order so raising an active card cannot cause flicker.
+function selectAtPosition(clientX, clientY) {
+  const bounds = cards.map(card => card.querySelector('button').getBoundingClientRect());
+  const contains = (r, margin) => clientX >= r.left - margin && clientX <= r.right + margin && clientY >= r.top - margin && clientY <= r.bottom + margin;
+  let index = bounds.findLastIndex(r => contains(r, 0));
+  if (index < 0) {
+    let distance = Infinity;
+    bounds.forEach((r, i) => {
+      if (!contains(r, 24)) return;
+      const d = Math.hypot(Math.max(r.left - clientX, 0, clientX - r.right), Math.max(r.top - clientY, 0, clientY - r.bottom));
+      if (d <= distance) { distance = d; index = i; }
+    });
   }
-  if (cards[index] !== selectedCard) selectCard(cards[index]);
+  if (index >= 0 && cards[index] !== selectedCard) selectCard(cards[index]);
 }
-gallerySection.addEventListener('pointermove', event => {
+
+document.addEventListener('pointermove', event => {
   if (event.pointerType !== 'mouse' || mobileLayout.matches) return;
-  if (lastPointerX !== null && Math.abs(event.clientX - lastPointerX) < 2) return;
-  lastPointerX = event.clientX;
-  selectAtPosition(event.clientX);
+  selectAtPosition(event.clientX, event.clientY);
 });
-gallerySection.addEventListener('pointerleave', () => { lastPointerX = null; });
+
 gallery.addEventListener('pointerdown', event => {
   if (event.pointerType !== 'mouse' || mobileLayout.matches) return;
-  // Do not focus a different underlying card when clicking through the stack.
   event.preventDefault();
-  selectAtPosition(event.clientX, false);
+  selectAtPosition(event.clientX, event.clientY);
 });
 cards.forEach(card => {
   card.querySelector('button').addEventListener('focus', () => selectCard(card));
   card.querySelector('button').addEventListener('click', event => {
     if (event.detail && !mobileLayout.matches && event.pointerType === 'mouse') {
-      selectAtPosition(event.clientX, false);
+      selectAtPosition(event.clientX, event.clientY);
     } else selectCard(card);
   });
   card.querySelector('button').addEventListener('keydown', event => {
@@ -60,7 +58,6 @@ cards.forEach(card => {
 });
 selectCard(cards.at(-1));
 mobileLayout.addEventListener('change', () => {
-  lastPointerX = null;
   selectCard(selectedCard);
 });
 
@@ -133,7 +130,7 @@ window.addEventListener('keydown', event => {
 window.addEventListener('popstate', cancelNavigation);
 window.addEventListener('resize', cancelNavigation);
 reducedMotion.addEventListener('change', cancelNavigation);
-document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+document.querySelectorAll('nav a[href^="#"], .section-arrow[href^="#"]').forEach(link => {
   link.addEventListener('click', event => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = document.querySelector(link.hash);
