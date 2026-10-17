@@ -1,6 +1,6 @@
 # Crouzet — Crèmerie artisanale
 
-Site statique réalisé à partir de `Site_Crouzet / Version_04` (Figma, cadre `65:230`). HTML, CSS et JavaScript natifs, sans dépendance à installer ni compilation. Images et polices stockées localement.
+Site statique réalisé à partir de `Site_Crouzet / Version_17` (Figma, cadre `375:65`). HTML, CSS et JavaScript natifs, sans dépendance à installer ni compilation. Images et polices stockées localement.
 
 ## Lancer en local
 
@@ -30,7 +30,7 @@ Tous les chemins sont relatifs : le site fonctionne aussi sous une adresse de ty
 
 Les commentaires Figma sont reproduits : les légendes des photos se déplient depuis l’arrière de l’image lorsque leur emplacement entre dans la zone visible au défilement, une seule fois par chargement ; au survol d’un plateau, sa photo devient nette et sa description se déplie vers le bas. Sur mobile, les cartes sont nettes et défilent horizontalement au toucher ; les informations restent accessibles. Les préférences de réduction du mouvement sont respectées.
 
-Les six cartes de la maquette reprennent la même photographie. La seule fiche commerciale renseignée est « Le Plateau Terroir », 4 à 6 personnes, environ 700 g, à partir de 42 €. Cette fiche est réutilisée pour les six vues : remplacer les images et textes quand le catalogue définitif sera fourni.
+Les six cartes de la maquette reprennent la même photographie. La seule fiche commerciale renseignée est « Le Plateau Terroir », 4 à 6 personnes, environ 700 g, à partir de 45 €. Cette fiche est réutilisée pour les six vues : remplacer les images et textes quand le catalogue définitif sera fourni.
 
 Les commandes passent par téléphone ou courriel, comme dans la maquette. Le lien de l’adresse ouvre une recherche cartographique. Les textes et coordonnées ont été repris de Figma, sans vérification commerciale indépendante.
 
@@ -40,7 +40,7 @@ Rendu ordinateur et mobile inspecté ; chargement des images et polices ; naviga
 
 ## Sources
 
-- Maquette : https://www.figma.com/design/nmCJegZYehT8oqW1ipGjeQ/Site_Crouzet?node-id=65-230
+- Maquette : https://www.figma.com/design/nmCJegZYehT8oqW1ipGjeQ/Site_Crouzet?node-id=375-65
 - Photos : ressources fournies dans cette maquette.
 - Gambetta : Fontshare / Indian Type Foundry, https://www.fontshare.com/fonts/gambetta
 - Inter et Newsreader : Google Fonts, https://fonts.google.com
@@ -48,7 +48,7 @@ Rendu ordinateur et mobile inspecté ; chargement des images et polices ; naviga
 Les droits sur les photos restent ceux de leurs ayants droit. Les polices conservent leurs licences respectives.
 
 ## Interaction de la galerie
-Le déplacement horizontal de la souris sur toute la section sélectionne les plateaux successivement, y compris dans les espaces vides. Une tolérance de 8 pixels aux frontières évite les oscillations. La navigation clavier et le défilement tactile sont conservés.
+Le survol des images sélectionne les plateaux, avec une marge de 24 pixels autour de leur zone visible. Les descriptions restent alignées en bas. La navigation clavier et le défilement tactile sont conservés.
 
 
 ## Optimisation PageSpeed (20 septembre 2026)
@@ -58,7 +58,7 @@ Rapport initial bureau : performance 76, LCP 6,3 s, environ 11 925 Kio transfér
 - Images WebP de qualité 82, avec plusieurs résolutions et `srcset`/`sizes`. Les originaux PNG sont conservés pour les futures retouches mais ne sont plus chargés par la page.
 - Photo principale prioritaire, décodage asynchrone, chargement différé des photos plus bas.
 - Polices Inter et Newsreader converties en WOFF2 avec caractères latins étendus, ponctuation et monnaies (français inclus). Les TTF originaux sont conservés mais ne sont plus chargés.
-- Déclarations de polices regroupées au début de `style.css` pour éviter une seconde requête CSS bloquante. `assets/fonts.css` reste une référence, non liée par la page. Préchargement de Gambetta Medium Italic et Inter Light.
+- Déclarations de polices regroupées au début de `style.css` pour éviter une seconde requête CSS bloquante. Préchargement de Gambetta Medium Italic et Inter Light.
 - Aucun changement des règles de mise en page ni du JavaScript des animations.
 
 Les durées de cache HTTP de GitHub Pages relèvent de cet hébergement. Ajouter un fichier `.htaccess` ou `_headers` ici ne les modifierait pas. Les réductions de poids diminuent toutefois fortement le coût des rechargements.
