@@ -124,3 +124,5 @@ body>nav::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100v
 @font-face{font-family:InterArrows;src:url('assets/fonts/inter-variable.woff2') format('woff2');font-style:normal;font-weight:100 900;font-display:swap;unicode-range:U+2193}
 .section-arrow{font:400 20px/1 InterArrows,Inter,sans-serif;color:var(--olive)}
 .section-arrow-up{transform:rotate(180deg)}
+
+.section-arrow:hover{text-decoration:none}
