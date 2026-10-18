@@ -14,4 +14,4 @@ html.error-document{height:100%;overflow:hidden}
 body.error-page{height:100svh;min-height:0;overflow:hidden}
 .error-page .error-content{min-height:0}
 
-.error-link,.error-link:hover{text-decoration:underline;text-decoration-thickness:.25px;text-underline-offset:6px}
+.error-link,.error-link:hover{text-decoration:underline;text-decoration-thickness:var(--rule-thickness);text-decoration-color:var(--rule-color);text-underline-offset:6px}
