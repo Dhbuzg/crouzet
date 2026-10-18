@@ -1,7 +1,7 @@
 /* Figma 404 / Version_02, reference 1440 x 900. */
 body.error-page{--error-unit:min(1px,0.0694444444vw,0.1111111111svh);min-height:100svh;display:grid;place-items:center}
 .error-page .error-content{position:relative;isolation:isolate;width:100%;max-width:1440px;height:100svh;min-height:360px;max-height:900px;margin:0 auto;padding:0;overflow:visible;text-align:center}
-.error-content .error-illustration{left:calc(50% - 946 * var(--error-unit));top:calc(50% - 488 * var(--error-unit));width:calc(2136 * var(--error-unit));height:calc(1083 * var(--error-unit));opacity:.05;filter:url('#brand-texture')}
+.error-content .error-illustration{left:calc(50% - 946 * var(--error-unit));top:calc(50% - 488 * var(--error-unit));width:calc(2136 * var(--error-unit));height:calc(1083 * var(--error-unit));opacity:.1;filter:url('#brand-texture')}
 .error-content h1{position:absolute;left:50%;top:calc(50% - 116 * var(--error-unit));transform:translate(-50%,-50%);display:block;width:max-content;height:auto;margin:0;font:italic 500 calc(400 * var(--error-unit))/1 Gambetta,Georgia,serif;text-box:trim-both cap alphabetic}
 .error-message{position:absolute;left:0;right:0;top:calc(50% + 74.5 * var(--error-unit));transform:translateY(-50%);font:300 max(14px,calc(20 * var(--error-unit)))/1.4 Gambetta,Georgia,serif;text-box:trim-both cap alphabetic}
 .error-link{position:absolute;left:50%;top:calc(50% + 229 * var(--error-unit));transform:translateX(-50%);white-space:nowrap;font:300 max(14px,calc(20 * var(--error-unit)))/1 Inter,Arial,sans-serif;text-decoration:none}
