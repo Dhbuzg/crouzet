@@ -30,7 +30,7 @@ Tous les chemins sont relatifs : le site fonctionne aussi sous une adresse de ty
 
 Les commentaires Figma sont reproduits : les légendes des photos se déplient depuis l’arrière de l’image lorsque leur emplacement entre dans la zone visible au défilement, une seule fois par chargement ; au survol d’un plateau, sa photo devient nette et sa description se déplie vers le bas. Sur mobile, les cartes sont nettes et défilent horizontalement au toucher ; les informations restent accessibles. Les préférences de réduction du mouvement sont respectées.
 
-Les six cartes de la maquette reprennent la même photographie. La seule fiche commerciale renseignée est « Le Plateau Terroir », 4 à 6 personnes, environ 700 g, à partir de 45 €. Cette fiche est réutilisée pour les six vues : remplacer les images et textes quand le catalogue définitif sera fourni.
+Les trois plateaux reprennent la même photographie : Découverte (2 à 4 personnes, environ 450 g, à partir de 28 €), Terroir (4 à 6 personnes, environ 700 g, à partir de 45 €) et Festif (8 à 10 personnes, environ 1,2 kg, à partir de 75 €).
 
 Les commandes passent par téléphone ou courriel, comme dans la maquette. Le lien de l’adresse ouvre une recherche cartographique. Les textes et coordonnées ont été repris de Figma, sans vérification commerciale indépendante.
 
