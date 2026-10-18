@@ -68,19 +68,19 @@ if ('IntersectionObserver' in window && !reducedMotion.matches) {
   const captionObserver = new IntersectionObserver(entries => {
     for (const entry of entries) {
       if (!entry.isIntersecting) continue;
-      const caption = entry.target.parentElement.querySelector('figcaption');
+      const caption = entry.target.closest('figure').querySelector('figcaption');
       caption.classList.remove('caption-pending');
       caption.classList.add('caption-revealed');
       captionObserver.unobserve(entry.target);
       entry.target.remove();
     }
-  }, { rootMargin: '0px 0px -40px 0px', threshold: 0 });
+  }, { rootMargin: '0px', threshold: 0 });
   document.querySelectorAll('.hero-photo figcaption, .history-content figcaption').forEach(caption => {
     caption.classList.add('caption-pending');
     const marker = document.createElement('span');
     marker.className = 'caption-trigger';
     marker.setAttribute('aria-hidden', 'true');
-    caption.parentElement.append(marker);
+    caption.parentElement.querySelector('.image-window').append(marker);
     captionObserver.observe(marker);
   });
   reducedMotion.addEventListener('change', event => {
