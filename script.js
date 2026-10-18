@@ -5,8 +5,11 @@ const mobileLayout = matchMedia('(max-width: 760px)');
 let selectedCard = null;
 function selectCard(card) {
   selectedCard = card;
-  for (const item of cards) {
+  const selectedIndex = cards.indexOf(card);
+  for (const [index, item] of cards.entries()) {
     const active = item === card;
+    // Stack each neighbour above the cards farther from the selected image.
+    item.style.zIndex = String(cards.length - Math.abs(index - selectedIndex));
     item.classList.toggle('is-active', active);
     item.querySelector('button').setAttribute('aria-expanded', String(active || matchMedia('(max-width: 760px)').matches));
     item.querySelector('.platter-info').setAttribute('aria-hidden', String(!active && !matchMedia('(max-width: 760px)').matches));
