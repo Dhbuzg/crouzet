@@ -1,0 +1,17 @@
+/* Figma 404 / Version_02, reference 1440 x 900. */
+body.error-page{--error-unit:min(1px,0.0694444444vw,0.1111111111svh);min-height:100svh;display:grid;place-items:center}
+.error-page .error-content{position:relative;isolation:isolate;width:100%;max-width:1440px;height:100svh;min-height:360px;max-height:900px;margin:0 auto;padding:0;overflow:visible;text-align:center}
+.error-content .error-illustration{left:calc(50% - 946 * var(--error-unit));top:calc(50% - 488 * var(--error-unit));width:calc(2136 * var(--error-unit));height:calc(1083 * var(--error-unit));opacity:.05;filter:url('#brand-texture')}
+.error-content h1{position:absolute;left:50%;top:calc(50% - 116 * var(--error-unit));transform:translate(-50%,-50%);display:block;width:max-content;height:auto;margin:0;font:italic 500 calc(400 * var(--error-unit))/1 Gambetta,Georgia,serif;text-box:trim-both cap alphabetic}
+.error-message{position:absolute;left:0;right:0;top:calc(50% + 74.5 * var(--error-unit));transform:translateY(-50%);font:300 max(14px,calc(20 * var(--error-unit)))/1.4 Gambetta,Georgia,serif;text-box:trim-both cap alphabetic}
+.error-link{position:absolute;left:50%;top:calc(50% + 229 * var(--error-unit));transform:translateX(-50%);white-space:nowrap;font:300 max(14px,calc(20 * var(--error-unit)))/1 Inter,Arial,sans-serif;text-decoration:none}
+@media(max-width:760px){body.error-page{--error-unit:min(0.0694444444vw,0.1111111111svh)}.error-content .error-illustration{--error-unit:max(0.0694444444vw,0.07svh)}.error-message{padding:0 16px}.error-link{top:calc(50% + 140px)}}
+
+.error-illustration{--illustration-mask:url("data:image/svg+xml,%3Csvg%20width%3D%22991%22%20height%3D%22502%22%20viewBox%3D%220%200%20991%20502%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M692.456%2022.0963L719.081%20107H732.5L754%20129.5L748%20161.5L713%20168L686.5%20149.5L688%20121L703.094%20107L662.74%2072.5034L665.504%2098.0523L637.861%20154.674L615.056%20169.175L620.584%20224.415L751.197%20230.63L897.705%20216.129L957.137%20274.132L991%20423.282L856.932%20403.948L822.378%20307.276L744.978%20274.132L759.49%20489.571L679.326%20493.714L668.96%20359.755L603.308%20365.97L611.6%20493.714L521.07%20502L510.704%20374.256L418.791%20363.208L411.88%20502H319.967L328.26%20357.684L260.535%20359.755L236.347%20496.476L154.801%20485.428V234.773L34.5537%20131.887L11.0572%20137.411L0%20122.22L6.91074%20101.505L34.5537%2097.3618L43.5377%20116.696L161.02%20137.411L298.544%2075.2655L254.315%20154.674L371.798%20125.673L310.292%20209.224L552.859%20220.963V154.674L498.955%20195.414L483.061%20177.461L523.143%20147.769L471.312%20166.413L465.093%20147.769L539.729%2091.1472L612.983%2050.4072L631.642%205.52407L669.651%200L692.456%2022.0963ZM210.778%20206.462L202.485%20193.343L206.631%20177.461L227.363%20180.223L228.745%20201.629L210.778%20206.462ZM648.918%2038.6685L644.081%2030.3824L646.845%2021.4058L659.285%2024.1678V35.9065L648.918%2038.6685Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E%0A")} 
+
+/* The error page occupies exactly one viewport, without scrolling. */
+html.error-document{height:100%;overflow:hidden}
+body.error-page{height:100svh;min-height:0;overflow:hidden}
+.error-page .error-content{min-height:0}
+
+.error-link,.error-link:hover{text-decoration:underline;text-decoration-thickness:.25px;text-underline-offset:6px}
