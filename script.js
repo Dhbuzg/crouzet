@@ -64,35 +64,7 @@ mobileLayout.addEventListener('change', () => {
   selectCard(selectedCard);
 });
 
-// Observe a stationary marker, not the translated caption, so unfolding cannot
-// change the intersection geometry or trigger the animation prematurely.
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-if ('IntersectionObserver' in window && !reducedMotion.matches) {
-  const captionObserver = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      const caption = entry.target.closest('figure').querySelector('figcaption');
-      caption.classList.remove('caption-pending');
-      caption.classList.add('caption-revealed');
-      captionObserver.unobserve(entry.target);
-      entry.target.remove();
-    }
-  }, { rootMargin: '0px', threshold: 0 });
-  document.querySelectorAll('.hero-photo figcaption, .history-content figcaption').forEach(caption => {
-    caption.classList.add('caption-pending');
-    const marker = document.createElement('span');
-    marker.className = 'caption-trigger';
-    marker.setAttribute('aria-hidden', 'true');
-    caption.parentElement.querySelector('.image-window').append(marker);
-    captionObserver.observe(marker);
-  });
-  reducedMotion.addEventListener('change', event => {
-    if (!event.matches) return;
-    captionObserver.disconnect();
-    document.querySelectorAll('.caption-pending').forEach(caption => caption.classList.remove('caption-pending'));
-    document.querySelectorAll('.caption-trigger').forEach(marker => marker.remove());
-  });
-}
 
 // Align thin rules to physical pixels, including after fonts load or zoom changes.
 const headingRules = [...document.querySelectorAll('.heading-line')];
@@ -133,7 +105,7 @@ window.addEventListener('keydown', event => {
 window.addEventListener('popstate', cancelNavigation);
 window.addEventListener('resize', cancelNavigation);
 reducedMotion.addEventListener('change', cancelNavigation);
-document.querySelectorAll('nav a[href^="#"], .section-arrow[href^="#"]').forEach(link => {
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
   link.addEventListener('click', event => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     const target = document.querySelector(link.hash);
