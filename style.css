@@ -232,37 +232,17 @@ header[tabindex="-1"]:focus,main>section[tabindex="-1"]:focus{outline:none}
  .contact h2{height:calc(23 * var(--m))}
  .contact h2 span{left:calc(107 * var(--m));top:calc(12.9235 * var(--m))}
  .contact .heading-line{top:calc(22.55 * var(--m))}
- .contact-content{position:absolute;left:0;top:calc(69.1067 * var(--m));width:calc(165 * var(--m));margin:0;display:flex;flex-direction:column;gap:calc(15 * var(--m))}
+ .contact-content{position:absolute;left:0;top:calc(75.75 * var(--m));width:calc(165 * var(--m));margin:0;display:flex;flex-direction:column;gap:calc(15 * var(--m))}
  .contact-content p{margin:0!important;line-height:calc(15 * var(--m));text-box:trim-both cap alphabetic}
  .contact-content p:nth-child(3){order:-1}
  .contact a[href^='mailto:']{white-space:nowrap}
- .contact-photo{position:absolute;left:calc(185 * var(--m));top:calc(123 * var(--m));width:calc(165 * var(--m));margin:0}
+ .contact-photo{position:absolute;left:calc(185 * var(--m));top:calc(129.65 * var(--m));width:calc(165 * var(--m));margin:0}
  .contact-photo .image-window{aspect-ratio:165/226.6102}
  .contact-photo img{height:112.52%;width:100.28%;max-width:none;position:absolute;top:-6.35%;left:-.28%}
  .illustration-cheese{left:calc(160 * var(--m));top:calc(48.1067 * var(--m));bottom:auto;width:calc(233 * var(--m));height:calc(211 * var(--m))}
- .contact a{text-decoration:none;text-decoration-thickness:1px;text-underline-offset:3px}
+ .contact a{text-decoration:underline;text-decoration-thickness:var(--rule-thickness);text-underline-offset:3px}
 }
 
-/* Consistent mobile spacing, measured at the 390 px design width. */
-@media(max-width:760px){
- header{height:calc(378 * var(--m))}
- .brand{top:calc(144 * var(--m))}
- .illustration-brand{top:calc(100 * var(--m))}
- main{display:flex;flex-direction:column;gap:calc(100 * var(--m));padding-bottom:calc(50 * var(--m))}
- main>section{height:auto;flex:none}
- .history-content{margin-top:calc(50 * var(--m))}
- .markets table{position:relative;top:auto;left:auto;margin:calc(50 * var(--m)) 0 0 calc(50 * var(--m))}
- .market-notes{position:relative;top:auto;left:auto;margin:calc(50 * var(--m)) 0 0 calc(26 * var(--m))}
- .platter-gallery{margin-top:calc(50 * var(--m))}
- .platter{--card-offset:calc(var(--i)*var(--step))}
- .platter:nth-child(2){--card-offset:calc(10.33 * var(--m))}
- .platter-info{position:relative;top:auto;margin-top:calc(24.012 * var(--m) - var(--card-offset))}
- .contact{display:grid;grid-template-columns:repeat(2,calc(165 * var(--m)));column-gap:calc(20 * var(--m));align-items:start}
- .contact h2{grid-column:1/-1}
- .contact-content{grid-column:1;grid-row:2;position:relative;top:auto;left:auto;margin:calc(50 * var(--m)) 0 0}
- .contact-photo{grid-column:2;grid-row:2;position:relative;top:auto;left:auto;margin:calc(103.8933 * var(--m)) 0 0}
-}
-@media(max-width:760px){
- /* Include the trimmed heading's baseline offset in the final block bounds. */
- .contact{padding-bottom:calc(4 * var(--m))}
-}
+
+/* Clickable text shares the separator stroke width. */
+a,a:hover{ text-decoration:underline;text-decoration-thickness:var(--rule-thickness);text-decoration-color:var(--rule-color);text-underline-offset:3px }
