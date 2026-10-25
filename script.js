@@ -70,7 +70,6 @@ const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 const headingRules = [...document.querySelectorAll('.heading-line')];
 function alignHeadingRules() {
   const ratio = window.devicePixelRatio || 1;
-  document.documentElement.style.setProperty('--rule-thickness', `${Math.max(1, Math.round(ratio)) / ratio}px`);
   for (const line of headingRules) {
     line.style.transform = 'none';
     const y = line.getBoundingClientRect().top + window.scrollY;

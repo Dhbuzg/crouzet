@@ -48,7 +48,7 @@
   src: url('assets/fonts/google-4.woff2') format('woff2');
 }
 
-:root{--cream:#f7f9fc;--olive:#2B4A31;--rule-thickness:1px;--rule-color:var(--olive);--layout-unit:min(1px,0.0694444444vw);--block-height:calc(900 * var(--layout-unit));--block-gap:calc(175 * var(--layout-unit))}
+:root{--cream:#f7f9fc;--olive:#2B4A31;--rule-thickness:0.25px;--rule-color:var(--olive);--layout-unit:min(1px,0.0694444444vw);--block-height:calc(900 * var(--layout-unit));--block-gap:calc(175 * var(--layout-unit))}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:60px;overflow-x:clip}body{margin:0;background:var(--cream);color:var(--olive);font:300 clamp(16px,1.389vw,20px)/1.5 Inter,Arial,sans-serif;overflow-x:clip}
 main,header{max-width:1440px;margin:auto;position:relative;isolation:isolate}
 a{color:inherit;text-decoration:none}a:hover{text-decoration:none;text-decoration-thickness:var(--rule-thickness);text-decoration-color:var(--rule-color);text-underline-offset:6px}a:focus-visible,button:focus-visible{outline:2px solid var(--olive);outline-offset:6px}
