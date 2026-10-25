@@ -11,8 +11,8 @@ function selectCard(card) {
     // Stack each neighbour above the cards farther from the selected image.
     item.style.zIndex = String(cards.length - Math.abs(index - selectedIndex));
     item.classList.toggle('is-active', active);
-    item.querySelector('button').setAttribute('aria-expanded', String(active || matchMedia('(max-width: 760px)').matches));
-    item.querySelector('.platter-info').setAttribute('aria-hidden', String(!active && !matchMedia('(max-width: 760px)').matches));
+    item.querySelector('button').setAttribute('aria-expanded', String(active));
+    item.querySelector('.platter-info').setAttribute('aria-hidden', String(!active));
   }
 }
 
@@ -56,7 +56,7 @@ cards.forEach(card => {
     let index = cards.indexOf(card);
     index = event.key === 'Home' ? 0 : event.key === 'End' ? cards.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + cards.length) % cards.length;
     cards[index].querySelector('button').focus({preventScroll:true});
-    if (matchMedia('(max-width: 760px)').matches) cards[index].scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'nearest',inline:'center'});
+
   });
 });
 selectCard(cards.at(-1));
