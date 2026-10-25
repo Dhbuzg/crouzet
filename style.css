@@ -244,20 +244,6 @@ header[tabindex="-1"]:focus,main>section[tabindex="-1"]:focus{outline:none}
 }
 
 
-/* Clickable text shares the separator stroke width. */
-a,a:hover{ text-decoration:underline;text-decoration-thickness:var(--rule-thickness);text-decoration-color:var(--rule-color);text-underline-offset:3px }
-
-/* Draw link strokes like separators; avoid native underline rasterization. */
-a,a:hover,.contact a{
- text-decoration:none;
- background-image:linear-gradient(var(--rule-color),var(--rule-color));
- background-size:100% var(--rule-thickness);
- background-position:left bottom;
- background-repeat:no-repeat;
- -webkit-box-decoration-break:clone;box-decoration-break:clone;
- padding-bottom:0;
-}
-
 /* Keep the title, number and separator on the same text baseline. */
 h2 .heading-text{position:static;top:auto;left:auto;width:auto;text-align:inherit;font:inherit}
 @media(max-width:760px){
@@ -269,3 +255,24 @@ h2 .heading-text{position:static;top:auto;left:auto;width:auto;text-align:inheri
  .platters h2 .heading-line{flex-basis:calc(42 * var(--m))}
 }
 @media(max-width:760px){.history h2,.markets h2,.platters h2,.contact h2{padding-left:0!important}}
+
+/* Desktop retains its original visible rules and text underlines. */
+@media(min-width:761px){
+ :root{--rule-thickness:1px}
+ a{background-image:none;padding-bottom:0;text-decoration:none}
+ a:hover,.contact a{ text-decoration:underline;text-decoration-thickness:var(--rule-thickness);text-decoration-color:var(--rule-color);text-underline-offset:6px }
+ body>nav a{text-decoration:none}
+ body>nav a:hover{text-decoration:underline;text-decoration-thickness:var(--rule-thickness);text-underline-offset:6px}
+ .heading-line{opacity:1}
+}
+/* Mobile uses the fine shared stroke without extra spacing. */
+@media(max-width:760px){
+ a,a:hover,.contact a{text-decoration:none;background-image:linear-gradient(var(--rule-color),var(--rule-color));background-size:100% var(--rule-thickness);background-position:left bottom;background-repeat:no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding-bottom:0}
+}
+
+@media(max-width:760px){
+ /* Paint a full box before scaling so Safari keeps the thin separator visible. */
+ main>section h2 .heading-line{height:1px;transform:scaleY(.25);transform-origin:left bottom;will-change:transform}
+ body{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
+ img{-webkit-touch-callout:none;-webkit-user-drag:none;pointer-events:none}
+}

@@ -71,6 +71,7 @@ const headingRules = [...document.querySelectorAll('.heading-line')];
 function alignHeadingRules() {
   const ratio = window.devicePixelRatio || 1;
   for (const line of headingRules) {
+    if (mobileLayout.matches) { line.style.removeProperty('transform'); continue; }
     line.style.transform = 'none';
     const y = line.getBoundingClientRect().top + window.scrollY;
     line.style.transform = `translateY(${Math.round(y * ratio) / ratio - y}px)`;
@@ -193,4 +194,9 @@ document.addEventListener('click', event => {
       !cursorDown || cursorAngle > -89 || event.target.closest('a,button')) return;
   event.preventDefault();
   document.querySelector('nav a[href="#histoire"]').click();
+});
+
+// Suppress native long-press content menus while retaining taps and scrolling.
+document.addEventListener('contextmenu', event => {
+  if (mobileLayout.matches && !event.target.closest('input,textarea,[contenteditable=true]')) event.preventDefault();
 });
