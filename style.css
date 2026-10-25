@@ -197,7 +197,7 @@ header[tabindex="-1"]:focus,main>section[tabindex="-1"]:focus{outline:none}
  main>section{margin:0 calc(20 * var(--m));padding:0;min-height:0}
  h2{font-size:calc(35 * var(--m));line-height:normal;text-box:trim-both cap alphabetic;height:calc(23 * var(--m));min-height:0;padding-left:calc(123 * var(--m))!important;--line-width:calc(119 * var(--m))!important}
  h2 span{left:calc(103 * var(--m));top:calc(17 * var(--m));width:calc(16 * var(--m));font-size:calc(8 * var(--m));line-height:1}
- .heading-line{top:calc(23 * var(--m));width:calc(103 * var(--m));height:0.25px}
+ .heading-line{top:calc(23 * var(--m));width:calc(103 * var(--m));height:var(--rule-thickness)}
  .history{height:calc(377.85 * var(--m))}
  .history-content{display:grid;grid-template-columns:calc(150.795 * var(--m)) 1fr;column-gap:calc(18.205 * var(--m));align-items:start;margin-top:calc(65.49 * var(--m))}
  .history-content figure{width:100%}
@@ -240,6 +240,12 @@ header[tabindex="-1"]:focus,main>section[tabindex="-1"]:focus{outline:none}
 }
 @media(max-width:760px){
  main,header{overflow:clip}
- .contact-content{margin-top:calc(54 * var(--m))}
+ .contact-content{margin-top:calc(128 * var(--m))}
  .heading-line{opacity:.4}
+}
+
+/* Short mobile copy; photographs and SVGs remain shared with desktop. */
+@media(max-width:760px){
+ .desktop-history-details,.desktop-order-details{display:none}
+ .contact a[href^="tel:"],.contact a[href^="mailto:"]{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 }
