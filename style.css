@@ -246,3 +246,14 @@ header[tabindex="-1"]:focus,main>section[tabindex="-1"]:focus{outline:none}
 
 /* Clickable text shares the separator stroke width. */
 a,a:hover{ text-decoration:underline;text-decoration-thickness:var(--rule-thickness);text-decoration-color:var(--rule-color);text-underline-offset:3px }
+
+/* Draw link strokes like separators; avoid native underline rasterization. */
+a,a:hover,.contact a{
+ text-decoration:none;
+ background-image:linear-gradient(color-mix(in srgb,var(--rule-color) 40%,transparent),color-mix(in srgb,var(--rule-color) 40%,transparent));
+ background-size:100% var(--rule-thickness);
+ background-position:left bottom;
+ background-repeat:no-repeat;
+ -webkit-box-decoration-break:clone;box-decoration-break:clone;
+ padding-bottom:3px;
+}
