@@ -276,3 +276,9 @@ h2 .heading-text{position:static;top:auto;left:auto;width:auto;text-align:inheri
  body{-webkit-touch-callout:none;-webkit-user-select:none;user-select:none}
  img{-webkit-touch-callout:none;-webkit-user-drag:none;pointer-events:none}
 }
+
+/* Preserve italic accents and dots above the font's capital-height boundary. */
+@media(max-width:760px){
+ main>section h2 .heading-text{text-box:normal;line-height:1;overflow:visible}
+ main>section h2{overflow:visible}
+}
