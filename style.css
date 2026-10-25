@@ -192,7 +192,7 @@ header[tabindex="-1"]:focus,main>section[tabindex="-1"]:focus{outline:none}
  main>section{margin:0 calc(20 * var(--m));padding:0;min-height:0}
  h2{font-size:calc(35 * var(--m));line-height:normal;text-box:trim-both cap alphabetic;height:calc(33.064 * var(--m));min-height:0;padding-left:calc(123 * var(--m))!important;--line-width:calc(119 * var(--m))!important}
  h2 span{left:calc(108 * var(--m));top:calc(24.438 * var(--m));width:calc(11 * var(--m));font-size:calc(8 * var(--m));line-height:1}
- .heading-line{top:calc(33.064 * var(--m));width:calc(103 * var(--m));height:var(--rule-thickness);opacity:.4}
+ .heading-line{top:calc(33.064 * var(--m));width:calc(103 * var(--m));height:var(--rule-thickness);opacity:1}
  .history{height:calc(449.3222 * var(--m))}
  .history-content{position:relative;display:grid;grid-template-columns:calc(165 * var(--m)) calc(165 * var(--m));column-gap:calc(20 * var(--m));align-items:start;margin-top:calc(52.875 * var(--m))}
  .history-content figure{width:100%}
@@ -250,10 +250,22 @@ a,a:hover{ text-decoration:underline;text-decoration-thickness:var(--rule-thickn
 /* Draw link strokes like separators; avoid native underline rasterization. */
 a,a:hover,.contact a{
  text-decoration:none;
- background-image:linear-gradient(color-mix(in srgb,var(--rule-color) 40%,transparent),color-mix(in srgb,var(--rule-color) 40%,transparent));
+ background-image:linear-gradient(var(--rule-color),var(--rule-color));
  background-size:100% var(--rule-thickness);
  background-position:left bottom;
  background-repeat:no-repeat;
  -webkit-box-decoration-break:clone;box-decoration-break:clone;
- padding-bottom:3px;
+ padding-bottom:0;
 }
+
+/* Keep the title, number and separator on the same text baseline. */
+h2 .heading-text{position:static;top:auto;left:auto;width:auto;text-align:inherit;font:inherit}
+@media(max-width:760px){
+ main>section h2{display:flex;align-items:baseline;gap:calc(4.5 * var(--m));padding-left:0!important;text-box:normal;line-height:1}
+ main>section h2 .heading-line{position:static;flex:0 0 calc(103 * var(--m));width:auto;align-self:baseline}
+ main>section h2>span:not(.heading-text){position:static;flex:0 0 calc(11 * var(--m));width:auto;line-height:1}
+ main>section h2 .heading-text{flex:none;line-height:1;text-box:trim-both cap alphabetic}
+ .markets h2 .heading-line{flex-basis:calc(165 * var(--m))}
+ .platters h2 .heading-line{flex-basis:calc(42 * var(--m))}
+}
+@media(max-width:760px){.history h2,.markets h2,.platters h2,.contact h2{padding-left:0!important}}
