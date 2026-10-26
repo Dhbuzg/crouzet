@@ -177,7 +177,7 @@ header[tabindex="-1"]:focus,main>section[tabindex="-1"]:focus{outline:none}
 
 /* Shared text wrappers preserve desktop typography and assets. */
 h2 .heading-text{position:static;top:auto;left:auto;width:auto;text-align:inherit;font:inherit}
-.mobile-caption,.mobile-history-copy,.mobile-contact-copy{display:none}
+.mobile-caption,.mobile-history-copy{display:none}
 @media(min-width:761px){
  :root{--rule-thickness:1px}
  a{background-image:none;padding-bottom:0;text-decoration:none}
@@ -233,9 +233,9 @@ h2 .heading-text{position:static;top:auto;left:auto;width:auto;text-align:inheri
  .platter-info>p{line-height:calc(15 * var(--m))}
  .platter-info>p:not(.platter-name){width:calc(79.7875 * var(--m));text-box:trim-both cap alphabetic}
  .desktop-caption{display:none}.mobile-caption{display:block}
- .mobile-contact-copy{display:block;position:absolute;left:calc(10 * var(--m));top:calc(73 * var(--m));width:calc(180 * var(--m))}
- .mobile-contact-copy p{margin:0;line-height:calc(15 * var(--m));text-box:trim-both cap alphabetic}
- .mobile-contact-copy p+p{margin-top:calc(21 * var(--m))}
+ .contact-content{display:block;position:absolute;left:calc(10 * var(--m));top:calc(73 * var(--m));width:calc(180 * var(--m))}
+ .contact-content p{margin:0;line-height:calc(15 * var(--m));text-box:trim-both cap alphabetic}
+ .contact-content p+p{margin-top:calc(21 * var(--m))}
  .contact-photo{position:absolute;left:calc(200 * var(--m));top:calc(103 * var(--m));width:calc(180 * var(--m));margin:0}
  .contact-photo .image-window{aspect-ratio:180/247}
  .contact-photo img{height:112.971%;width:100.2794%;max-width:none;position:absolute;top:-6.3756%;left:-.2794%}
@@ -251,3 +251,9 @@ h2 .heading-text{position:static;top:auto;left:auto;width:auto;text-align:inheri
 
 /* Let the first italic heading extend above main without clipping its dots. */
 @media(max-width:760px){main{overflow:visible}}
+
+/* Shared contact copy uses paragraph breaks instead of fixed desktop offsets. */
+@media(min-width:761px){
+ .contact-content p{line-height:calc(30 * var(--layout-unit))}
+ .contact-content p+p{position:static;top:auto;margin-top:calc(30 * var(--layout-unit))}
+}
