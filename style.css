@@ -248,3 +248,6 @@ h2 .heading-text{position:static;top:auto;left:auto;width:auto;text-align:inheri
  .history-content>.mobile-history-copy{white-space:nowrap}
  .platter:nth-child(3).is-active img{height:108.507%;top:-4.2535%;bottom:auto}
 }
+
+/* Let the first italic heading extend above main without clipping its dots. */
+@media(max-width:760px){main{overflow:visible}}
