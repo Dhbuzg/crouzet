@@ -48,3 +48,5 @@ Vérifier Firefox et Chromium, ordinateur, mobile, 404, changements de largeur, 
 - [Newsreader](https://github.com/productiontype/Newsreader)
 
 Photos et illustrations : ressources fournies pour le projet.
+
+Le favicon reste au format PNG, 192 × 192 px. Après remplacement, actualiser sa référence `favicon.png?v=...` dans les deux pages pour renouveler le cache du navigateur.

@@ -164,3 +164,10 @@ Consultées le 27 octobre 2026. Elles expliquent les principes ; l’arborescenc
 - 404 vérifiée à 390 et 1440 px : ressources chargées, aucun défilement, statut HTTP 404 sur URL inexistante. Ouverture directe des deux HTML vérifiée. JSON-LD analysé, chemins locaux contrôlés, syntaxe JavaScript et diff sans erreur.
 - La configuration distante Pages n’a pas été modifiée ni confirmée depuis un compte GitHub. Aucun commit, push ou déploiement n’a été réalisé.
 - Restent hors de ce nettoyage : nouveau design éventuel de la 404, création de la page Mentions légales et validation après publication.
+
+### Ajustement mobile suivant
+
+- [x] Photos Histoire et Contact alignées à 10 px des bords, largeur 180 px et hauteur 225 px sur la référence de 390 px.
+- [x] Contact : texte remonté, numéro sur une ligne dédiée et illustration remontée. Ajustement fondé sur les captures fournies ; lecture directe Figma indisponible (quota).
+
+- [x] Favicon PNG 192 × 192 confirmé identique en local et sur le domaine public ; référence versionnée dans les deux pages pour invalider les anciennes copies en cache. À actualiser après remplacement du fichier.

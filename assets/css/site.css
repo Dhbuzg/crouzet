@@ -595,10 +595,10 @@ footer {
     display: none;
   }
   .history-content figure {
-    left: 2.7027027%;
+    left: 0;
     top: calc(83.27477 * var(--layout-unit));
-    width: 44.5945946%;
-    height: calc(206.25 * var(--layout-unit));
+    width: calc(180 * var(--layout-unit));
+    height: calc(225 * var(--layout-unit));
   }
   .history-content>p {
     left: 52.7027027%;
@@ -656,19 +656,20 @@ footer {
   }
   .contact-content {
     left: 0;
-    top: calc(116 * var(--layout-unit));
+    top: calc(73 * var(--layout-unit));
     width: calc(185 * var(--layout-unit));
     line-height: calc(15 * var(--layout-unit));
   }
   .contact-photo {
-    left: calc(204 * var(--layout-unit));
-    top: calc(157 * var(--layout-unit));
-    width: calc(165 * var(--layout-unit));
-    height: calc(205 * var(--layout-unit));
+    left: auto;
+    right: 0;
+    top: calc(126 * var(--layout-unit));
+    width: calc(180 * var(--layout-unit));
+    height: calc(225 * var(--layout-unit));
   }
   .illustration-cheese {
     left: calc(8 * var(--layout-unit));
-    top: calc(85 * var(--layout-unit));
+    top: calc(62 * var(--layout-unit));
     width: calc(163 * var(--layout-unit));
     height: calc(148 * var(--layout-unit));
   }
