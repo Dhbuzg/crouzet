@@ -60,13 +60,17 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
   });
 });
 
-// Homepage-only mouse experiment; touch and keyboard retain normal navigation.
+// Animated mouse cursor; touch and keyboard retain normal navigation.
 const hero = document.querySelector('#accueil');
 const cursorPointer = matchMedia('(hover:hover) and (pointer:fine)');
 const heroCursor = document.createElement('span');
 heroCursor.className = 'hero-cursor';
 heroCursor.setAttribute('aria-hidden', 'true');
-heroCursor.innerHTML = '<span class="cursor-shape"></span>';
+const cursorShape = document.createElement('img');
+cursorShape.className = 'cursor-shape';
+cursorShape.src = new URL('../illustrations/cursor.svg', document.currentScript.src).href;
+cursorShape.alt = '';
+heroCursor.append(cursorShape);
 document.body.append(heroCursor);
 let cursorX = -1, cursorY = -1, cursorAngle = 0, cursorTarget = 0, cursorFrame;
 let cursorVisible = false, cursorDown = false, mousePresent = false;
@@ -79,7 +83,7 @@ function rotateHeroCursor(target) {
   function step(now) {
     const progress = reducedMotion.matches ? 1 : Math.min(1, (now - began) / 180);
     cursorAngle = from + (target - from) * easeInOutCubic(progress);
-    heroCursor.firstElementChild.style.transform = `rotate(${cursorAngle}deg)`;
+    cursorShape.style.transform = `rotate(${cursorAngle}deg)`;
     if (progress < 1) cursorFrame = requestAnimationFrame(step);
   }
   cursorFrame = requestAnimationFrame(step);

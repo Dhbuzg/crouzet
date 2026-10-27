@@ -1,35 +1,33 @@
 <!doctype html>
 <html lang="fr" class="error-document">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#f7f9fc">
-  <base href="/">
-  <script>if(location.protocol === "file:") document.querySelector("base").setAttribute("href", "./");</script>
-  <title>Page introuvable - Crèmerie Crouzet</title>
-  <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
-  <link rel="stylesheet" href="style.css?v=e6e032205079">
-  <link rel="stylesheet" href="404.css?v=41cfa6854233">
-</head>
-<body class="error-page">
-<svg class="illustration-filters" aria-hidden="true" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <filter id="illustration-texture" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency=".999" numOctaves="3" seed="452" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-    <filter id="brand-texture" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
-      <feTurbulence type="fractalNoise" baseFrequency=".999" numOctaves="3" seed="9766" result="noise"/>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
-    </filter>
-  </defs>
-</svg>
-  <main class="error-content">
-    <div class="illustration illustration-brand error-illustration" aria-hidden="true"><img draggable="false" src="assets/corbeau-renard.svg" alt=""></div>
-    <h1><span class="sr-only">Erreur </span>404</h1>
-    <p class="error-message">Oops, cette page n’existe pas!</p>
-    <a class="error-link" href="index.html">Retour à l’accueil &gt;</a>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#f7f9fc">
+    <base href="/">
+    <script>if(location.protocol === "file:") document.querySelector("base").setAttribute("href", "./");</script>
+    <title>Page introuvable - Crèmerie Crouzet</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link rel="stylesheet" href="assets/css/site.css?v=20261027">
+    <link rel="stylesheet" href="assets/css/404.css?v=20261027">
+  </head>
+  <body class="error-page">
+    <svg class="illustration-filters" aria-hidden="true" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="brand-texture" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency=".999" numOctaves="3" seed="9766" result="noise"/>
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </defs>
+    </svg>
+    <main class="error-content">
+      <div class="illustration illustration-brand error-illustration" aria-hidden="true">
+        <img draggable="false" src="assets/illustrations/corbeau-renard.svg" alt="">
+      </div>
+      <h1><span class="sr-only">Erreur </span>404</h1>
+      <p class="error-message">Oops, cette page n’existe pas!</p>
+      <a class="error-link" href="index.html">Retour à l’accueil &gt;</a>
+    </main>
+  </body>
 </html>

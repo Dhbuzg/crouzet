@@ -1,83 +1,50 @@
-# Crouzet — Crèmerie artisanale
+# Crèmerie Crouzet
 
-Site statique réalisé à partir de `Site_Crouzet / Version_17` (Figma, cadre `375:65`). HTML, CSS et JavaScript natifs, sans dépendance à installer ni compilation. Images et polices stockées localement.
+Site statique HTML, CSS et JavaScript, sans compilation ni dépendance à installer. Un contenu commun s’adapte aux maquettes ordinateur Version_22 et mobile Version_03, avec leurs dernières corrections.
 
-## Lancer en local
+## Utiliser le projet
 
-Avec Node.js installé, ouvrir un terminal dans ce dossier :
+Avec Node.js installé, lancer `npm start`, puis ouvrir http://127.0.0.1:4173. Arrêter avec Ctrl+C. `npm run check` vérifie la syntaxe JavaScript. Les fichiers HTML peuvent aussi être ouverts directement ; le serveur permet de tester les URL inexistantes.
 
-```sh
-npm start
-```
+## Organisation
 
-Ouvrir http://127.0.0.1:4173. Arrêter avec Ctrl+C. Il est aussi possible d’ouvrir directement `index.html` dans un navigateur.
-
-## Publier sur GitHub Pages
-
-1. Créer un dépôt GitHub et y envoyer le contenu de ce dossier.
-2. Dans les paramètres du dépôt, ouvrir Pages, choisir le déploiement depuis une branche, puis `main` et `/ (root)`.
-3. Enregistrer et attendre que GitHub affiche l’adresse du site.
-
-Tous les chemins sont relatifs : le site fonctionne aussi sous une adresse de type `utilisateur.github.io/crouzet/`. Le fichier `.nojekyll` permet de servir les fichiers statiques directement. Aucun secret ni service externe n’est requis. Le dépôt n’a pas été créé et le site n’a pas été publié automatiquement.
+- `index.html` : contenu, marchés, contact et métadonnées.
+- `404.html` : page introuvable.
+- `assets/css/site.css` : polices, variables, sections et adaptations mobiles.
+- `assets/css/404.css` : particularités de la 404.
+- `assets/js/site.js` : navigation, largeur utile et curseur.
+- `assets/images/` : photos responsive et aperçu de partage.
+- `assets/illustrations/` : SVG et curseur.
+- `assets/fonts/` : polices nommées par famille, graisse et style.
+- `server.mjs` : serveur local.
+- `documentation/referencement.md` : notes SEO.
+- `TODO.md` : suivi des travaux.
 
 ## Modifier le site
 
-- `index.html` : textes, marchés, coordonnées et cartes de plateaux.
-- `style.css` : couleurs, tailles, mise en page responsive et animations.
-- `script.js` : sélection des plateaux au survol, au clic et au clavier.
-- `assets/` : photos exactes exportées de Figma et polices.
-- `server.mjs` : serveur de développement local uniquement.
+Les formats ordinateur et mobile partagent le même HTML. Le point de rupture est de 760 px. La composition est mise à l’échelle depuis les coordonnées Figma : blocs de 1440 × 900 sur ordinateur, maquette de 390 px de large sur mobile. Les variables sont au début de site.css et les adaptations mobiles en fin de fichier.
 
-Les commentaires Figma sont reproduits : les légendes des photos se déplient depuis l’arrière de l’image lorsque leur emplacement entre dans la zone visible au défilement, une seule fois par chargement ; au survol d’un plateau, sa photo devient nette et sa description se déplie vers le bas. Sur mobile, les cartes sont nettes et défilent horizontalement au toucher ; les informations restent accessibles. Les préférences de réduction du mouvement sont respectées.
+Modifier les textes dans index.html et les dimensions dans les règles de la section concernée. Éviter les correctifs successifs en fin de fichier. Conserver les variantes de photos référencées par picture/srcset : elles fournissent les recadrages et résolutions utiles.
 
-Les trois plateaux reprennent la même photographie : Découverte (2 à 4 personnes, environ 450 g, à partir de 28 €), Terroir (4 à 6 personnes, environ 700 g, à partir de 45 €) et Festif (8 à 10 personnes, environ 1,2 kg, à partir de 75 €).
+Les SVG utilisent #2b4a31, avec 10 % d’opacité pour les fonds. Les séparateurs sont déclarés à 1 px. Les liens sont soulignés sur mobile et au survol sur ordinateur. La rubrique Plateaux est retirée ; Mentions légales reste inactif tant que sa page n’est pas fournie.
 
-Les commandes passent par téléphone ou courriel, comme dans la maquette. Le lien de l’adresse ouvre une recherche cartographique. Les textes et coordonnées ont été repris de Figma, sans vérification commerciale indépendante.
+Les références CSS et JavaScript partagent une version de publication : `?v=20261027`. Lors d’une modification destinée à être publiée, actualiser cette valeur dans les deux pages. Pas de génération automatique d’empreintes ni de compilation.
 
-## Vérifications effectuées
+## Publication et contrôles
 
-Rendu ordinateur et mobile inspecté ; chargement des images et polices ; navigation des plateaux au clavier ; sélection par clic ; liens de contact ; absence de débordement à 390, 760, 1024 et 1440 px ; réduction des animations ; absence d’erreurs JavaScript et de ressources HTTP manquantes.
+Conserver index.html, 404.html, favicon.png, CNAME, .nojekyll, robots.txt et sitemap.xml à la racine de la source publiée. Le rangement ne nécessite aucun changement de configuration GitHub Pages. Le dossier documentation contient des notes, et ne correspond pas à la source de publication /docs.
+
+Le domaine canonique est https://cremeriecrouzet.fr/. En cas de changement, actualiser canonical, métadonnées de partage, données structurées, robots.txt et sitemap.xml. Voir [les notes de référencement](documentation/referencement.md).
+
+Le serveur Node est destiné au développement ; npm start ne publie rien. Les notes suivies dans la racine publiée peuvent être accessibles publiquement : ne pas y mettre de données privées.
+
+Vérifier Firefox et Chromium, ordinateur, mobile, 404, changements de largeur, zoom et défilement. Contrôler le clavier, la réduction du mouvement, le menu fixe, les ancres, le curseur et les liens mail/téléphone. Comparer aux maquettes et cocher uniquement les contrôles réalisés dans TODO.md.
 
 ## Sources
 
-- Maquette : https://www.figma.com/design/nmCJegZYehT8oqW1ipGjeQ/Site_Crouzet?node-id=375-65
-- Photos : ressources fournies dans cette maquette.
-- Gambetta : Fontshare / Indian Type Foundry, https://www.fontshare.com/fonts/gambetta
-- Inter et Newsreader : Google Fonts, https://fonts.google.com
+- [Figma Crouzet](https://www.figma.com/design/nmCJegZYehT8oqW1ipGjeQ)
+- [Gambetta — Fontshare](https://www.fontshare.com/fonts/gambetta)
+- [Inter](https://rsms.me/inter/)
+- [Newsreader](https://github.com/productiontype/Newsreader)
 
-Les droits sur les photos restent ceux de leurs ayants droit. Les polices conservent leurs licences respectives.
-
-## Interaction de la galerie
-Le survol des images sélectionne les plateaux, avec une marge de 24 pixels autour de leur zone visible. Les descriptions restent alignées en bas. La navigation clavier et le défilement tactile sont conservés.
-
-
-## Optimisation PageSpeed (20 septembre 2026)
-
-Rapport initial bureau : performance 76, LCP 6,3 s, environ 11 925 Kio transférés. Les photos PNG étaient la principale charge réseau.
-
-- Images WebP de qualité 82, avec plusieurs résolutions et `srcset`/`sizes`. Les originaux PNG sont conservés pour les futures retouches mais ne sont plus chargés par la page.
-- Photo principale prioritaire, décodage asynchrone, chargement différé des photos plus bas.
-- Polices Inter et Newsreader converties en WOFF2 avec caractères latins étendus, ponctuation et monnaies (français inclus). Les TTF originaux sont conservés mais ne sont plus chargés.
-- Déclarations de polices regroupées au début de `style.css` pour éviter une seconde requête CSS bloquante. Préchargement de Gambetta Medium Italic et Inter Light.
-- Aucun changement des règles de mise en page ni du JavaScript des animations.
-
-Les durées de cache HTTP de GitHub Pages relèvent de cet hébergement. Ajouter un fichier `.htaccess` ou `_headers` ici ne les modifierait pas. Les réductions de poids diminuent toutefois fortement le coût des rechargements.
-
-Pour mesurer le nouveau score PageSpeed, envoyer ces modifications sur GitHub, attendre le déploiement Pages puis relancer le rapport. Aucun nouveau score public n’a été mesuré avant publication.
-
-## Référencement (22 septembre 2026)
-
-Le titre, la description et les aperçus de partage ciblent les fromages et plateaux dans les Landes. Le logo et la date 2001 sont conservés. Les données structurées décrivent l’organisation, ses coordonnées et ses communes desservies, sans présenter l’adresse privée comme une boutique. Aucun horaire supplémentaire ni tarif n’est inventé. Le contenu visible, les styles et les animations sont inchangés.
-
-- Publier aussi robots.txt et sitemap.xml à la racine du domaine cremeriecrouzet.fr. Le sitemap ne contient que la page canonique : les ancres des sections ne sont pas des pages distinctes.
-- Après publication, vérifier le domaine dans Google Search Console, transmettre https://cremeriecrouzet.fr/sitemap.xml et demander une nouvelle indexation de la page d’accueil. Cette configuration nécessite l’accès au compte et, pour la propriété de domaine, au DNS.
-- Configurer Google Business Profile selon l’activité réelle et son éligibilité, sans afficher l’adresse privée comme un magasin ouvert au public.
-- Demander progressivement des mentions auprès des marchés, communes et partenaires locaux.
-- Les prix affichés sont encore « ?€ » : les renseigner lorsque les tarifs définitifs sont disponibles (aucune modification faite dans cette intervention).
-
-Si le domaine change, mettre à jour ensemble la canonical, les URL de partage, le JSON-LD, robots.txt et sitemap.xml. Aucun compte Google ni déploiement n’a été modifié par cette intervention.
-
-
-## Maquettes actuelles
-
-La mise en page suit les exports ordinateur Version_22 (1440 × 4025) et mobile Version_03 (390 × 1720). Les positions et recadrages correspondants sont dans `layout.css`. La rubrique Plateaux est retirée en attendant les offres définitives. Mentions légales reste un libellé non actif, sa page étant encore à concevoir.
+Photos et illustrations : ressources fournies pour le projet.
