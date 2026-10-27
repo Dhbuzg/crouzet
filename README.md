@@ -76,3 +76,8 @@ Le titre, la description et les aperçus de partage ciblent les fromages et plat
 - Les prix affichés sont encore « ?€ » : les renseigner lorsque les tarifs définitifs sont disponibles (aucune modification faite dans cette intervention).
 
 Si le domaine change, mettre à jour ensemble la canonical, les URL de partage, le JSON-LD, robots.txt et sitemap.xml. Aucun compte Google ni déploiement n’a été modifié par cette intervention.
+
+
+## Maquettes actuelles
+
+La mise en page suit les exports ordinateur Version_22 (1440 × 4025) et mobile Version_03 (390 × 1720). Les positions et recadrages correspondants sont dans `layout.css`. La rubrique Plateaux est retirée en attendant les offres définitives. Mentions légales reste un libellé non actif, sa page étant encore à concevoir.
