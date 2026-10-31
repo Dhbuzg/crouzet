@@ -28,7 +28,7 @@ Modifier les textes dans index.html et les dimensions dans les règles de la sec
 
 Les SVG utilisent #2b4a31, avec 10 % d’opacité pour les fonds. Les séparateurs sont déclarés à 1 px. Les liens sont soulignés sur mobile et au survol sur ordinateur. La rubrique Plateaux est retirée. Les mentions légales sont intégrées dans index.html sous forme de panneau modal : ouverture vers le haut, défilement interne, fermeture progressive par défilement vers le haut à la limite du contenu. La section dédiée de assets/js/site.js gère cette interaction ; Échap permet aussi de fermer. La position du site est conservée derrière le panneau.
 
-Les ressources modifiées sont versionnées dans leurs références (`?v=20261031-5` pour les styles actuels). Actualiser les références concernées lors d’une publication. Pas de génération automatique d’empreintes ni de compilation.
+Les ressources modifiées sont versionnées dans leurs références (`?v=20261031-6` pour les styles actuels). Actualiser les références concernées lors d’une publication. Pas de génération automatique d’empreintes ni de compilation.
 
 ## Publication et contrôles
 
@@ -50,3 +50,5 @@ Vérifier Firefox et Chromium, ordinateur, mobile, 404, changements de largeur, 
 Photos et illustrations : ressources fournies pour le projet.
 
 Le favicon reste au format PNG, 192 × 192 px. Après remplacement, actualiser sa référence `favicon.png?v=...` dans toutes les pages HTML pour renouveler le cache du navigateur.
+
+Le défilement à la molette est amorti sur ordinateur, y compris dans les mentions légales et pendant leur fermeture. Les gestes tactiles restent natifs et la préférence de réduction des animations est respectée. Le curseur est conservé dans la couche supérieure pendant les transitions.

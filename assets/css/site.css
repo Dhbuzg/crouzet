@@ -524,6 +524,11 @@ footer {
 
 /* A single SVG supplies both mouse cursor forms. */
 .hero-cursor {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
   position: fixed;
   left: 0;
   top: 0;

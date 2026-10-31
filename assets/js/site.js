@@ -35,6 +35,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
     if (!target) return;
     event.preventDefault();
     cancelNavigation();
+    pageScrollMotion.stop();
     const start = window.scrollY;
     const padding = parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
     const end = Math.max(0, Math.min(target.getBoundingClientRect().top + start - padding,
@@ -68,6 +69,7 @@ const cursorPointer = matchMedia('(hover:hover) and (pointer:fine)');
 const heroCursor = document.createElement('span');
 heroCursor.className = 'hero-cursor';
 heroCursor.setAttribute('aria-hidden', 'true');
+heroCursor.popover = 'manual';
 const cursorShape = document.createElement('img');
 cursorShape.className = 'cursor-shape';
 cursorShape.src = new URL('../illustrations/cursor.svg', document.currentScript.src).href;
@@ -93,11 +95,13 @@ function rotateHeroCursor(target) {
 function updateHeroCursor() {
   const rect = hero.getBoundingClientRect();
   const underPointer = document.elementFromPoint(cursorX, cursorY);
-  cursorVisible = mousePresent && cursorPointer.matches && !!underPointer && !legalDialog.open;
-  cursorDown = cursorVisible && rect.top >= 60 && cursorX >= rect.left && cursorX <= rect.right &&
+  cursorVisible = mousePresent && cursorPointer.matches && !!underPointer;
+  cursorDown = cursorVisible && !legalDialog.open && rect.top >= 60 && cursorX >= rect.left && cursorX <= rect.right &&
     cursorY >= rect.top + rect.height * .75 && cursorY <= window.innerHeight &&
     !underPointer.closest('a,button,input,textarea,select,[contenteditable]');
+  if (!cursorVisible && heroCursor.matches(':popover-open')) heroCursor.hidePopover();
   heroCursor.hidden = !cursorVisible;
+  if (cursorVisible && !heroCursor.matches(':popover-open')) heroCursor.showPopover();
   document.documentElement.classList.toggle('has-custom-cursor', cursorVisible);
   heroCursor.style.transform = `translate3d(${cursorX}px,${cursorY}px,0)`;
   rotateHeroCursor(cursorDown ? -90 : 0);
@@ -126,6 +130,59 @@ document.addEventListener('contextmenu', event => {
   if (mobileLayout.matches && !event.target.closest('input,textarea,[contenteditable=true]')) event.preventDefault();
 });
 
+// Frame-rate independent easing for mouse wheels; touch scrolling stays native.
+function createScrollMotion(read, write, onRest = () => {}) {
+  let frame = 0, target = 0, previousTime = 0;
+  function stop() {
+    cancelAnimationFrame(frame);
+    frame = 0;
+  }
+  function step(now) {
+    const elapsed = Math.min(64, now - previousTime);
+    previousTime = now;
+    const current = read();
+    const next = current + (target - current) * (1 - Math.exp(-elapsed / 90));
+    if (Math.abs(target - next) < .5) {
+      write(target);
+      frame = 0;
+      onRest();
+    } else {
+      write(next);
+      frame = requestAnimationFrame(step);
+    }
+  }
+  return {
+    stop,
+    add(distance, maximum) {
+      if (!frame) target = read();
+      target = Math.max(0, Math.min(maximum, target + distance));
+      if (reducedMotion.matches) {
+        stop();
+        write(target);
+        onRest();
+      } else if (!frame) {
+        previousTime = performance.now();
+        frame = requestAnimationFrame(step);
+      }
+    }
+  };
+}
+const wheelDistance = event => event.deltaY *
+  (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1);
+const pageScrollMotion = createScrollMotion(() => window.scrollY,
+  top => window.scrollTo({ top, behavior: 'instant' }));
+window.addEventListener('wheel', event => {
+  if (event.defaultPrevented || legalDialog.open || !cursorPointer.matches || reducedMotion.matches ||
+      event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY) ||
+      event.target.closest?.('input,textarea,select,[contenteditable]')) return;
+  event.preventDefault();
+  pageScrollMotion.add(wheelDistance(event), document.documentElement.scrollHeight - window.innerHeight);
+}, { passive: false });
+for (const type of ['pointerdown', 'touchstart', 'keydown', 'resize', 'popstate']) {
+  window.addEventListener(type, pageScrollMotion.stop, { passive: true });
+}
+reducedMotion.addEventListener('change', pageScrollMotion.stop);
+
 // The legal sheet scrolls independently; upward overscroll lowers it back to the site.
 const legalScroll = legalDialog.querySelector('.legal-scroll');
 const legalTrigger = document.querySelector('.footer-link');
@@ -140,7 +197,15 @@ function positionLegalSheet(offset) {
   legalDialog.style.transform = `translateY(${legalOffset}px)`;
 }
 
+const legalContentMotion = createScrollMotion(() => legalScroll.scrollTop,
+  top => { legalScroll.scrollTop = top; });
+const legalSheetMotion = createScrollMotion(() => legalOffset, positionLegalSheet, () => {
+  if (legalDialog.open && legalOffset >= window.innerHeight) finishLegalClose();
+});
+
 function animateLegalSheet(destination, duration, finish = () => {}) {
+  legalSheetMotion.stop();
+  legalContentMotion.stop();
   cancelAnimationFrame(legalAnimation);
   const origin = legalOffset;
   const started = performance.now();
@@ -158,6 +223,8 @@ function animateLegalSheet(destination, duration, finish = () => {}) {
 }
 
 function finishLegalClose() {
+  legalSheetMotion.stop();
+  legalContentMotion.stop();
   cancelAnimationFrame(legalAnimation);
   legalMoving = false;
   legalTouchY = null;
@@ -176,10 +243,12 @@ legalTrigger.addEventListener('click', event => {
   event.preventDefault();
   if (legalDialog.open) return;
   cancelNavigation();
+  pageScrollMotion.stop();
   legalReturnFocus = document.activeElement;
   legalDialog.style.width = `${window.innerWidth}px`;
   document.documentElement.classList.add('legal-open');
   positionLegalSheet(window.innerHeight);
+  if (heroCursor.matches(':popover-open')) heroCursor.hidePopover();
   legalDialog.showModal();
   legalScroll.scrollTop = 0;
   legalScroll.focus({ preventScroll: true });
@@ -200,12 +269,17 @@ legalDialog.addEventListener('wheel', event => {
   }
   if (legalOffset > 0 || (legalScroll.scrollTop <= 0 && event.deltaY < 0)) {
     event.preventDefault();
-    const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1;
-    dragLegalSheet(-event.deltaY * unit);
+    legalContentMotion.stop();
+    legalSheetMotion.add(-wheelDistance(event), window.innerHeight);
+  } else {
+    event.preventDefault();
+    legalContentMotion.add(wheelDistance(event), legalScroll.scrollHeight - legalScroll.clientHeight);
   }
 }, { passive: false });
 
 legalScroll.addEventListener('touchstart', event => {
+  legalContentMotion.stop();
+  legalSheetMotion.stop();
   legalTouchY = event.touches.length === 1 ? event.touches[0].clientY : null;
 }, { passive: true });
 
@@ -234,12 +308,15 @@ legalDialog.addEventListener('cancel', event => {
   closeLegalSheet();
 });
 legalDialog.querySelector('.legal-close').addEventListener('click', closeLegalSheet);
+legalScroll.addEventListener('pointerdown', legalContentMotion.stop, { passive: true });
 legalScroll.addEventListener('keydown', event => {
+  legalContentMotion.stop();
+  legalSheetMotion.stop();
   if (event.target !== legalScroll || legalMoving) return;
   const distance = event.key === 'ArrowUp' ? 40 : event.key === 'PageUp' ? window.innerHeight * .8 : 0;
   if (distance && legalScroll.scrollTop <= 0) {
     event.preventDefault();
-    dragLegalSheet(distance);
+    legalSheetMotion.add(distance, window.innerHeight);
   }
 });
 
@@ -247,6 +324,13 @@ window.addEventListener('resize', () => {
   if (!legalDialog.open) return;
   cancelAnimationFrame(legalAnimation);
   legalMoving = false;
+  legalSheetMotion.stop();
+  legalContentMotion.stop();
   legalDialog.style.width = `${window.innerWidth}px`;
   positionLegalSheet(0);
+});
+
+reducedMotion.addEventListener('change', () => {
+  legalContentMotion.stop();
+  legalSheetMotion.stop();
 });

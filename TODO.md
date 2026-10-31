@@ -220,3 +220,8 @@ Cette intégration remplace les anciennes mentions du libellé légal inactif da
 - [x] Regrouper les styles des mentions légales dans site.css et leurs interactions dans site.js.
 - [x] Retirer les fichiers dédiés, actualiser les références, le contrôle JavaScript et le README.
 - [x] Conserver 404.css pour les particularités de la page introuvable.
+
+### Fluidité du défilement et continuité du curseur
+- [x] Amortir le défilement à la molette de la page, du contenu légal et du panneau, avec un calcul indépendant de la fréquence d’écran.
+- [x] Conserver le même curseur au-dessus du panneau et lors de sa fermeture.
+- [x] Préserver les gestes tactiles natifs et la réduction des animations.
