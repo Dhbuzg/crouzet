@@ -104,7 +104,7 @@
     <link rel="preload" href="assets/fonts/gambetta-medium-italic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-light.woff2" as="font" type="font/woff2" crossorigin>
     <script src="assets/js/site.js?v=20261027-2" defer></script>
-    <link rel="stylesheet" href="assets/css/site.css?v=20261027-2">
+    <link rel="stylesheet" href="assets/css/site.css?v=20261031-2">
   </head>
   <body>
     <a class="skip-link" href="#histoire">Aller au contenu</a>
@@ -123,7 +123,10 @@
     <main>
       <section id="histoire" class="history" aria-labelledby="history-title">
         <div class="illustration illustration-crow" aria-hidden="true">
-          <img draggable="false" src="assets/illustrations/corbeau.svg" alt="">
+          <picture>
+            <source media="(max-width:760px)" srcset="assets/illustrations/corbeau-mobile.svg">
+            <img draggable="false" src="assets/illustrations/corbeau.svg" alt="">
+          </picture>
         </div>
         <h2 id="history-title"><i class="heading-line" aria-hidden="true"></i><span>01</span><span class="heading-text">Notre histoire,</span></h2>
         <div class="history-content">
@@ -131,11 +134,11 @@
             <div class="image-window">
               <picture>
                 <source media="(min-width:761px)"
-                  srcset="assets/images/histoire-desktop-460.webp 460w, assets/images/histoire-desktop-920.webp 920w"
+                  srcset="assets/images/histoire-desktop-459.webp 459w, assets/images/histoire-desktop-918.webp 918w"
                   sizes="32vw">
                 <img draggable="false" src="assets/images/histoire-mobile-560.webp"
                   srcset="assets/images/histoire-mobile-400.webp 400w, assets/images/histoire-mobile-560.webp 560w, assets/images/histoire-mobile-1080.webp 1080w"
-                  sizes="46.16vw" width="460" height="602" loading="lazy" alt="Préparation de fromage frais au camion Crouzet">
+                  sizes="46.16vw" width="459" height="603" loading="lazy" alt="Préparation de fromage frais au camion Crouzet">
               </picture>
             </div>
           </figure>
@@ -157,13 +160,13 @@
             <tr><th scope="col">Jour et moment</th><th scope="col">Ville</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row"><span class="market-day">Mardi</span><em class="market-time">Matin</em></th><td>Mont-de-Marsan</td></tr>
-            <tr><th scope="row"><span class="market-day">Mercredi</span><em class="market-time">Matin</em></th><td>Morcenx</td></tr>
-            <tr><th scope="row"><span class="market-day">Jeudi</span><em class="market-time">Matin</em></th><td>Lit-et-Mixe</td></tr>
-            <tr><th scope="row"><span class="market-day">Jeudi</span><em class="market-time">À partir de 17h</em></th><td>Magescq</td></tr>
-            <tr><th scope="row"><span class="market-day">Vendredi</span><em class="market-time">Matin</em></th><td>Mimizan</td></tr>
-            <tr><th scope="row"><span class="market-day">Samedi</span><em class="market-time">Matin</em></th><td>Mont-de-Marsan</td></tr>
-            <tr><th scope="row"><span class="market-day">Dimanche</span><em class="market-time">Matin</em></th><td>Léon*</td></tr>
+            <tr><th scope="row"><span class="market-day">Mardi</span><em class="market-time">Matin</em></th><td><span class="market-city">Mont-de-Marsan</span></td></tr>
+            <tr><th scope="row"><span class="market-day">Mercredi</span><em class="market-time">Matin</em></th><td><span class="market-city">Morcenx</span></td></tr>
+            <tr><th scope="row"><span class="market-day">Jeudi</span><em class="market-time">Matin</em></th><td><span class="market-city">Lit-et-Mixe</span></td></tr>
+            <tr><th scope="row"><span class="market-day">Jeudi</span><em class="market-time">À partir de 17h</em></th><td><span class="market-city">Magescq</span></td></tr>
+            <tr><th scope="row"><span class="market-day">Vendredi</span><em class="market-time">Matin</em></th><td><span class="market-city">Mimizan</span></td></tr>
+            <tr><th scope="row"><span class="market-day">Samedi</span><em class="market-time">Matin</em></th><td><span class="market-city">Mont-de-Marsan</span></td></tr>
+            <tr><th scope="row"><span class="market-day">Dimanche</span><em class="market-time">Matin</em></th><td><span class="market-city">Léon*</span></td></tr>
           </tbody>
         </table>
         <div class="market-notes">
@@ -176,7 +179,7 @@
         </div>
         <h2 id="contact-title"><i class="heading-line" aria-hidden="true"></i><span>03</span><span class="heading-text">Contact,</span></h2>
         <div class="contact-content">
-          <p>Une question ? <strong>Écrivez-nous</strong> à <a href="mailto:lepalaisdufromage@orange.fr"><em>lepalaisdufromage@orange.fr</em></a> ou par téléphone au<br class="mobile-break"> <a href="tel:+33685920299"><em>06.85.92.02.99.</em></a></p>
+          <p>Une question ? <strong>Écrivez-nous</strong> à <a href="mailto:lepalaisdufromage@orange.fr"><em>lepalaisdufromage@orange.fr</em></a> ou par téléphone au<br class="mobile-break"> <a href="tel:+33685920299"><em>06.85.92.02.99</em></a>.</p>
         </div>
         <figure class="contact-photo">
           <div class="image-window">
@@ -191,7 +194,7 @@
           </div>
         </figure>
       </section>
-      <footer><span class="legal-placeholder" role="link" aria-disabled="true">Mentions légales</span>
+      <footer><a class="footer-link" href="mentions-legales.html">Mentions légales</a>
       </footer>
     </main>
   </body></html>

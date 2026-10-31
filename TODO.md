@@ -171,3 +171,33 @@ Consultées le 27 octobre 2026. Elles expliquent les principes ; l’arborescenc
 - [x] Contact : texte remonté, numéro sur une ligne dédiée et illustration remontée. Ajustement fondé sur les captures fournies ; lecture directe Figma indisponible (quota).
 
 - [x] Favicon PNG 192 × 192 confirmé identique en local et sur le domaine public ; référence versionnée dans les deux pages pour invalider les anciennes copies en cache. À actualiser après remplacement du fichier.
+
+### Page Mentions légales — PDF Version_02
+
+- [x] Page mentions-legales.html intégrée, avec les positions et textes du PDF 1440 × 900.
+- [x] Lien du pied de page activé et sitemap actualisé.
+- [x] Présentation en une colonne lisible sur petit écran, en attendant une éventuelle maquette mobile dédiée.
+- [ ] Préciser les durées de conservation et finaliser les formulations provisoires du PDF relatives aux traitements et traceurs. Le contenu fourni est conservé sans validation juridique.
+
+Cette intégration remplace les anciennes mentions du libellé légal inactif dans le bilan précédent.
+
+### Mentions légales — mise en page Version_04
+
+- [x] Une colonne, marges latérales de 50 px à 1440 px, titre principal 70 px, titres de rubrique 40 px, corps 20 px / interligne 30 px.
+- [x] Positions et espacements repris du PDF 1440 × 2249, avec les emphases actualisées.
+
+### Maquettes Figma du 31 octobre 2026
+
+- [x] Ordinateur Version_23 : corbeau sans fromage, renard redimensionné et replacé, coordonnées des blocs, photos, textes et titres actualisées.
+- [x] Mobile Version_04 : Histoire avec photo à droite, Contact avec photo à gauche, illustrations et textes replacés sur la référence 390 × 1720.
+- [x] Mentions légales Version_08 : ordre des rubriques, largeurs de texte, graisses, séparateur et espacements repris sur la référence 1440 × 3132.
+- [x] Contrôle dans le navigateur intégré : coordonnées aux largeurs utiles de 1440 et 390 px, navigation, chargement des images et absence de débordement horizontal à plusieurs largeurs.
+- [x] Vérification de syntaxe et du diff local.
+- [ ] Intégrer les mentions légales à la page principale avec ouverture du bas vers le haut. Cette interaction est volontairement reportée ; le fichier existant reste l’aperçu de travail.
+- [ ] Refaire le contrôle visuel dans Firefox après ces modifications.
+
+### Ajustement du cadrage — Version_23 révisée
+
+- [x] Espacement ordinateur porté à 200 px entre les blocs, pied de page compris ; hauteur totale de référence : 4175 px.
+- [x] Offset de navigation ordinateur porté à 150 px à l’échelle de référence, partagé par le défilement animé et les ancres natives. Les réglages mobiles restent inchangés.
+- [x] Navigateur intégré, vue 1456 × 1100 : arrivée des trois rubriques à 150 px environ ; titre suivant hors champ pour Histoire et Marchés. Coordonnées des blocs confirmées : 1100, 2100 et 3100 px.
