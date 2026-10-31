@@ -363,6 +363,7 @@ h2>.heading-text {
 }
 
 .history-content>p {
+  text-align: center;
   position: absolute;
   left: calc(77 * var(--layout-unit));
   top: calc(655.43 * var(--layout-unit));
@@ -441,6 +442,7 @@ h2>.heading-text {
 
 /* Contact and footer. */
 .contact-content {
+  text-align: center;
   position: absolute;
   left: calc(995 * var(--layout-unit));
   top: calc(475 * var(--layout-unit));
