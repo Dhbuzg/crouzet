@@ -1,4 +1,4 @@
-/* Figma Mentions Légales / Version_08: 1440 x 3132. */
+/* Revised PDF Version_08: 1440 x 3315. */
 .legal-page {
   --legal-unit: min(1px, .0694444444vw);
   font-size: calc(20 * var(--legal-unit));
@@ -9,8 +9,8 @@
   width: 100%;
   max-width: 1440px;
   height: auto;
-  min-height: calc(3132 * var(--legal-unit));
-  padding: calc(109.1 * var(--legal-unit)) calc(162 * var(--legal-unit)) calc(150 * var(--legal-unit));
+  min-height: calc(3315 * var(--legal-unit));
+  padding: calc(118.1 * var(--legal-unit)) calc(20 * var(--legal-unit)) calc(150 * var(--legal-unit));
 }
 
 .legal-title {
@@ -18,7 +18,7 @@
   display: flex;
   align-items: end;
   justify-content: start;
-  gap: calc(29 * var(--legal-unit));
+  gap: calc(20 * var(--legal-unit));
   height: auto;
   font: italic 400 calc(70 * var(--legal-unit))/1.5 Newsreader, Georgia, serif;
   text-box: trim-both cap alphabetic;
@@ -29,6 +29,11 @@
   text-box: trim-both cap alphabetic;
 }
 
+.legal-title > .legal-number {
+  flex: 0 0 calc(23 * var(--legal-unit));
+  font: 400 calc(20 * var(--legal-unit))/1 Newsreader, Georgia, serif;
+}
+
 .legal-title::before {
   content: "";
   flex: 0 0 calc(284 * var(--legal-unit));
@@ -37,8 +42,8 @@
 
 .legal-sections {
   display: grid;
-  grid-template-rows: minmax(min-content, calc(556 * var(--legal-unit))) minmax(min-content, calc(294 * var(--legal-unit))) minmax(min-content, calc(384 * var(--legal-unit))) minmax(min-content, calc(594 * var(--legal-unit))) minmax(min-content, calc(474 * var(--legal-unit))) auto;
-  margin-top: calc(255 * var(--legal-unit));
+  grid-template-rows: minmax(min-content, calc(584 * var(--legal-unit))) minmax(min-content, calc(344 * var(--legal-unit))) minmax(min-content, calc(434 * var(--legal-unit))) minmax(min-content, calc(644 * var(--legal-unit))) minmax(min-content, calc(524 * var(--legal-unit))) auto;
+  margin: calc(190 * var(--legal-unit)) calc(142 * var(--legal-unit)) 0;
   text-align: center;
 }
 
@@ -53,10 +58,6 @@
 .legal-copy {
   margin-top: calc(100 * var(--legal-unit));
   text-box: trim-both cap alphabetic;
-}
-
-.legal-editor .legal-copy {
-  text-box: normal;
 }
 
 .legal-section[aria-labelledby="copyright-title"] .legal-copy {
@@ -88,19 +89,19 @@
   }
   .legal-title {
     font-size: clamp(30px, 7.5vw, 56px);
-    gap: 15px;
+    gap: 10px;
   }
-  .legal-title > span {
-  text-box: trim-both cap alphabetic;
-}
-
-.legal-title::before {
+  .legal-title > .legal-number {
+    flex-basis: 16px;
+    font-size: 14px;
+  }
+  .legal-title::before {
     flex-basis: 10%;
   }
   .legal-sections {
     grid-template-rows: none;
     gap: 60px;
-    margin-top: 80px;
+    margin: 80px 0 0;
   }
   .legal-section h2 {
     font-size: 28px;

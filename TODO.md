@@ -201,3 +201,9 @@ Cette intégration remplace les anciennes mentions du libellé légal inactif da
 - [x] Espacement ordinateur porté à 200 px entre les blocs, pied de page compris ; hauteur totale de référence : 4175 px.
 - [x] Offset de navigation ordinateur porté à 150 px à l’échelle de référence, partagé par le défilement animé et les ancres natives. Les réglages mobiles restent inchangés.
 - [x] Navigateur intégré, vue 1456 × 1100 : arrivée des trois rubriques à 150 px environ ; titre suivant hors champ pour Histoire et Marchés. Coordonnées des blocs confirmées : 1100, 2100 et 3100 px.
+
+### Mentions légales — PDF Version_08 révisé
+
+- [x] Numéro 00, titre et séparateur repositionnés ; rubriques et espacements repris du nouvel export 1440 × 3315.
+- [x] Textes conservés ; ouverture animée dans la page principale toujours reportée.
+- [x] Positions contrôlées dans le navigateur : rubriques à 355, 939, 1283, 1717, 2361 et 2885 px sur la référence ; aucun débordement horizontal à 320 px.
