@@ -193,7 +193,7 @@ Cette intégration remplace les anciennes mentions du libellé légal inactif da
 - [x] Mentions légales Version_08 : ordre des rubriques, largeurs de texte, graisses, séparateur et espacements repris sur la référence 1440 × 3132.
 - [x] Contrôle dans le navigateur intégré : coordonnées aux largeurs utiles de 1440 et 390 px, navigation, chargement des images et absence de débordement horizontal à plusieurs largeurs.
 - [x] Vérification de syntaxe et du diff local.
-- [ ] Intégrer les mentions légales à la page principale avec ouverture du bas vers le haut. Cette interaction est volontairement reportée ; le fichier existant reste l’aperçu de travail.
+- [x] Intégrer les mentions légales à la page principale avec ouverture du bas vers le haut. Réalisé dans l’intervention « Mentions légales intégrées à la page principale » ci-dessous.
 - [ ] Refaire le contrôle visuel dans Firefox après ces modifications.
 
 ### Ajustement du cadrage — Version_23 révisée
@@ -207,3 +207,16 @@ Cette intégration remplace les anciennes mentions du libellé légal inactif da
 - [x] Numéro 00, titre et séparateur repositionnés ; rubriques et espacements repris du nouvel export 1440 × 3315.
 - [x] Textes conservés ; ouverture animée dans la page principale toujours reportée.
 - [x] Positions contrôlées dans le navigateur : rubriques à 355, 939, 1283, 1717, 2361 et 2885 px sur la référence ; aucun débordement horizontal à 320 px.
+
+### Mentions légales intégrées à la page principale
+
+- [x] Contenu déplacé dans index.html ; fichier HTML séparé et entrée de sitemap retirés.
+- [x] Panneau modal avec ouverture de bas en haut, défilement interne et fermeture pilotée par le défilement vers le haut au début du contenu.
+- [x] Gestion tactile, retour au focus initial, Échap et réduction des animations prévus.
+- [x] Navigateur intégré : ouverture, défilement interne, fermeture partielle puis complète à la molette, maintien de l’URL et de la position du site vérifiés.
+- [ ] Valider le ressenti du glissement sur un téléphone réel.
+
+### Unification des ressources de la page principale
+- [x] Regrouper les styles des mentions légales dans site.css et leurs interactions dans site.js.
+- [x] Retirer les fichiers dédiés, actualiser les références, le contrôle JavaScript et le README.
+- [x] Conserver 404.css pour les particularités de la page introuvable.

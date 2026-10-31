@@ -1,3 +1,5 @@
+const legalDialog = document.querySelector('#mentions-legales');
+
 // Measure usable width without containment on the scrolling root.
 function updateUsableViewportWidth() {
   document.documentElement.style.setProperty('--usable-viewport-width', `${document.documentElement.clientWidth}px`);
@@ -91,7 +93,7 @@ function rotateHeroCursor(target) {
 function updateHeroCursor() {
   const rect = hero.getBoundingClientRect();
   const underPointer = document.elementFromPoint(cursorX, cursorY);
-  cursorVisible = mousePresent && cursorPointer.matches && !!underPointer;
+  cursorVisible = mousePresent && cursorPointer.matches && !!underPointer && !legalDialog.open;
   cursorDown = cursorVisible && rect.top >= 60 && cursorX >= rect.left && cursorX <= rect.right &&
     cursorY >= rect.top + rect.height * .75 && cursorY <= window.innerHeight &&
     !underPointer.closest('a,button,input,textarea,select,[contenteditable]');
@@ -122,4 +124,129 @@ document.addEventListener('click', event => {
 // Suppress native long-press content menus while retaining taps and scrolling.
 document.addEventListener('contextmenu', event => {
   if (mobileLayout.matches && !event.target.closest('input,textarea,[contenteditable=true]')) event.preventDefault();
+});
+
+// The legal sheet scrolls independently; upward overscroll lowers it back to the site.
+const legalScroll = legalDialog.querySelector('.legal-scroll');
+const legalTrigger = document.querySelector('.footer-link');
+let legalOffset = 0;
+let legalAnimation;
+let legalMoving = false;
+let legalTouchY = null;
+let legalReturnFocus;
+
+function positionLegalSheet(offset) {
+  legalOffset = Math.max(0, Math.min(window.innerHeight, offset));
+  legalDialog.style.transform = `translateY(${legalOffset}px)`;
+}
+
+function animateLegalSheet(destination, duration, finish = () => {}) {
+  cancelAnimationFrame(legalAnimation);
+  const origin = legalOffset;
+  const started = performance.now();
+  legalMoving = true;
+  function frame(now) {
+    const progress = reducedMotion.matches ? 1 : Math.min(1, (now - started) / duration);
+    positionLegalSheet(origin + (destination - origin) * easeInOutCubic(progress));
+    if (progress < 1) legalAnimation = requestAnimationFrame(frame);
+    else {
+      legalMoving = false;
+      finish();
+    }
+  }
+  legalAnimation = requestAnimationFrame(frame);
+}
+
+function finishLegalClose() {
+  cancelAnimationFrame(legalAnimation);
+  legalMoving = false;
+  legalTouchY = null;
+  legalDialog.close();
+  document.documentElement.classList.remove('legal-open');
+  legalReturnFocus?.focus({ preventScroll: true });
+  updateHeroCursor();
+}
+
+function closeLegalSheet() {
+  animateLegalSheet(window.innerHeight, 400, finishLegalClose);
+}
+
+legalTrigger.addEventListener('click', event => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  event.preventDefault();
+  if (legalDialog.open) return;
+  cancelNavigation();
+  legalReturnFocus = document.activeElement;
+  legalDialog.style.width = `${window.innerWidth}px`;
+  document.documentElement.classList.add('legal-open');
+  positionLegalSheet(window.innerHeight);
+  legalDialog.showModal();
+  legalScroll.scrollTop = 0;
+  legalScroll.focus({ preventScroll: true });
+  updateHeroCursor();
+  animateLegalSheet(0, 750);
+});
+
+function dragLegalSheet(distance) {
+  positionLegalSheet(legalOffset + distance);
+  if (legalOffset >= window.innerHeight) finishLegalClose();
+}
+
+legalDialog.addEventListener('wheel', event => {
+  if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+  if (legalMoving) {
+    event.preventDefault();
+    return;
+  }
+  if (legalOffset > 0 || (legalScroll.scrollTop <= 0 && event.deltaY < 0)) {
+    event.preventDefault();
+    const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1;
+    dragLegalSheet(-event.deltaY * unit);
+  }
+}, { passive: false });
+
+legalScroll.addEventListener('touchstart', event => {
+  legalTouchY = event.touches.length === 1 ? event.touches[0].clientY : null;
+}, { passive: true });
+
+legalScroll.addEventListener('touchmove', event => {
+  if (!legalDialog.open || legalTouchY === null || event.touches.length !== 1) return;
+  const currentY = event.touches[0].clientY;
+  const distance = currentY - legalTouchY;
+  legalTouchY = currentY;
+  if (legalMoving || legalOffset > 0 || (legalScroll.scrollTop <= 0 && distance > 0)) {
+    event.preventDefault();
+    if (!legalMoving) dragLegalSheet(distance);
+  }
+}, { passive: false });
+
+function releaseLegalTouch() {
+  legalTouchY = null;
+  if (!legalDialog.open || legalMoving || legalOffset === 0) return;
+  if (legalOffset >= window.innerHeight * .25) closeLegalSheet();
+  else animateLegalSheet(0, 250);
+}
+legalScroll.addEventListener('touchend', releaseLegalTouch);
+legalScroll.addEventListener('touchcancel', releaseLegalTouch);
+
+legalDialog.addEventListener('cancel', event => {
+  event.preventDefault();
+  closeLegalSheet();
+});
+legalDialog.querySelector('.legal-close').addEventListener('click', closeLegalSheet);
+legalScroll.addEventListener('keydown', event => {
+  if (event.target !== legalScroll || legalMoving) return;
+  const distance = event.key === 'ArrowUp' ? 40 : event.key === 'PageUp' ? window.innerHeight * .8 : 0;
+  if (distance && legalScroll.scrollTop <= 0) {
+    event.preventDefault();
+    dragLegalSheet(distance);
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (!legalDialog.open) return;
+  cancelAnimationFrame(legalAnimation);
+  legalMoving = false;
+  legalDialog.style.width = `${window.innerWidth}px`;
+  positionLegalSheet(0);
 });
