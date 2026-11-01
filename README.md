@@ -22,7 +22,7 @@ Avec Node.js installé, lancer `npm start`, puis ouvrir http://127.0.0.1:4173. A
 
 ## Modifier le site
 
-Les formats ordinateur et mobile partagent le même HTML. Le point de rupture est de 760 px. Les coordonnées suivent les maquettes Figma : sections de 1440 × 800 espacées de 200 px sur ordinateur (Version_23), maquette mobile de 390 × 1720 px (Version_04). L’arrivée sur les sections ordinateur utilise un offset de 150 px à l’échelle de référence. Les variables sont au début de site.css ; les adaptations mobiles et le panneau légal sont regroupés dans des sections dédiées.
+Les formats ordinateur et mobile partagent le même HTML. Le point de rupture est de 760 px. Les coordonnées suivent les maquettes Figma : sections de 1440 × 800 espacées de 200 px sur ordinateur (Version_23), sauf Marchés : hauteur de 850 px et marge suivante de 150 px, avec 150 px entre le titre et le tableau, maquette mobile de 390 × 1720 px (Version_04). L’arrivée sur les sections ordinateur utilise un offset de 150 px à l’échelle de référence. Les variables sont au début de site.css ; les adaptations mobiles et le panneau légal sont regroupés dans des sections dédiées.
 
 Modifier les textes dans index.html et les dimensions dans les règles de la section concernée. Éviter les correctifs successifs en fin de fichier. Conserver les variantes de photos référencées par picture/srcset : elles fournissent les recadrages et résolutions utiles.
 

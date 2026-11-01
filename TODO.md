@@ -225,3 +225,8 @@ Cette intégration remplace les anciennes mentions du libellé légal inactif da
 - [x] Amortir le défilement à la molette de la page, du contenu légal et du panneau, avec un calcul indépendant de la fréquence d’écran.
 - [x] Conserver le même curseur au-dessus du panneau et lors de sa fermeture.
 - [x] Préserver les gestes tactiles natifs et la réduction des animations.
+
+### Espacement Marchés — PDF Version_23 du 1 novembre 2026
+- [x] Descendre le tableau de 50 px : écart titre-contenu de 150 px à l’échelle de référence.
+- [x] Étendre Marchés à 850 px et ajuster la marge suivante à 150 px ; conserver Contact à 3100 px et la page à 4175 px.
+- [x] Replacer le renard et la note conformément au PDF, sans modifier les coordonnées mobiles.

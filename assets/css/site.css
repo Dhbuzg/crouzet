@@ -374,10 +374,15 @@ h2>.heading-text {
 }
 
 /* Weekly markets. Colgroup keeps the accessible table header from shifting columns. */
+.markets {
+  height: calc(850 * var(--layout-unit));
+  margin-bottom: calc(150 * var(--layout-unit));
+}
+
 .markets table {
   position: absolute;
   left: calc(478 * var(--layout-unit));
-  top: calc(147 * var(--layout-unit));
+  top: calc(197 * var(--layout-unit));
   width: calc(443 * var(--layout-unit));
   border-collapse: collapse;
   table-layout: fixed;
@@ -512,7 +517,7 @@ footer {
 
 .illustration-fox {
   left: calc(125 * var(--layout-unit));
-  top: calc(321 * var(--layout-unit));
+  top: calc(271 * var(--layout-unit));
   width: calc(1115 * var(--layout-unit));
   height: calc(481 * var(--layout-unit));
 }
@@ -663,6 +668,10 @@ footer {
     top: calc(220 * var(--layout-unit));
     width: calc(179.953 * var(--layout-unit));
     height: calc(159 * var(--layout-unit));
+  }
+  .markets {
+    height: var(--block-height);
+    margin-bottom: var(--block-gap);
   }
   .markets table {
     left: calc(60 * var(--layout-unit));
