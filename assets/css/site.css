@@ -565,12 +565,12 @@ footer {
   }
 }
 
-/* Mobile: scale the 390 x 1720 frame to the usable viewport width. */
+/* Mobile: scale the 390 x 1650 frame to the usable viewport width. */
 @media (max-width: 760px) {
   :root {
     --layout-unit: calc(var(--usable-viewport-width, 100vw) / 390);
     --block-height: calc(350 * var(--layout-unit));
-    --block-gap: calc(100 * var(--layout-unit));
+    --block-gap: calc(50 * var(--layout-unit));
     --heading-gap: calc(10 * var(--layout-unit));
   }
   html {
@@ -593,7 +593,7 @@ footer {
   }
   header {
     height: calc(350 * var(--layout-unit));
-    margin: 0;
+    margin: 0 0 var(--block-gap);
   }
   .brand {
     position: absolute;
@@ -617,18 +617,18 @@ footer {
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(197 * var(--layout-unit));
-    font-size: calc(12 * var(--layout-unit));
+    top: calc(205 * var(--layout-unit));
+    font: 300 calc(12 * var(--layout-unit))/1.25 Gambetta, Georgia, serif;
   }
   .illustration-brand {
     left: 50%;
     top: calc(175 * var(--layout-unit));
-    width: calc(210 * var(--layout-unit));
-    height: calc(189.735 * var(--layout-unit));
+    width: calc(170.92 * var(--layout-unit));
+    height: calc(154.425 * var(--layout-unit));
   }
   main {
     padding: 0;
-    height: calc(1370 * var(--layout-unit));
+    height: calc(1250 * var(--layout-unit));
     overflow: visible;
   }
   main>section {
@@ -673,24 +673,24 @@ footer {
   }
   .history-content figure {
     position: absolute;
-    left: calc(190 * var(--layout-unit));
+    left: calc(205 * var(--layout-unit));
     top: calc(73 * var(--layout-unit));
-    width: calc(180 * var(--layout-unit));
-    height: calc(221 * var(--layout-unit));
+    width: calc(165 * var(--layout-unit));
+    height: calc(277 * var(--layout-unit));
   }
   .history-content>p {
     position: absolute;
-    transform: translateY(-100%);
+    transform: translateY(-50%);
     left: 0;
-    top: calc(316 * var(--layout-unit));
+    top: calc(211.5 * var(--layout-unit));
     width: calc(180 * var(--layout-unit));
     line-height: calc(15 * var(--layout-unit));
   }
   .illustration-crow {
-    left: calc(-22 * var(--layout-unit));
-    top: calc(220 * var(--layout-unit));
-    width: calc(179.953 * var(--layout-unit));
-    height: calc(159 * var(--layout-unit));
+    left: calc(20 * var(--layout-unit));
+    top: calc(83 * var(--layout-unit));
+    width: calc(117 * var(--layout-unit));
+    height: calc(103 * var(--layout-unit));
   }
   .markets {
     height: var(--block-height);
@@ -728,22 +728,22 @@ footer {
   }
   .market-notes {
     font-weight: 200;
-    left: calc(36 * var(--layout-unit));
-    top: calc(350 * var(--layout-unit));
+    left: 0;
+    top: calc(342 * var(--layout-unit));
     font-size: calc(12 * var(--layout-unit));
     line-height: calc(18 * var(--layout-unit));
   }
   .illustration-fox {
-    left: calc(3 * var(--layout-unit));
-    top: calc(152 * var(--layout-unit));
-    width: calc(364 * var(--layout-unit));
-    height: calc(157 * var(--layout-unit));
+    left: calc(142 * var(--layout-unit));
+    top: calc(178 * var(--layout-unit));
+    width: calc(370 * var(--layout-unit));
+    height: calc(160 * var(--layout-unit));
   }
   .contact-content {
     position: absolute;
-    transform: translateY(-100%);
+    transform: translateY(-50%);
     left: calc(190 * var(--layout-unit));
-    top: calc(141 * var(--layout-unit));
+    top: calc(211.5 * var(--layout-unit));
     width: calc(180 * var(--layout-unit));
     line-height: calc(15 * var(--layout-unit));
   }
@@ -751,12 +751,12 @@ footer {
     position: absolute;
     left: 0;
     right: auto;
-    top: calc(126 * var(--layout-unit));
-    width: calc(180 * var(--layout-unit));
-    height: calc(224 * var(--layout-unit));
+    top: calc(73 * var(--layout-unit));
+    width: calc(165 * var(--layout-unit));
+    height: calc(277 * var(--layout-unit));
   }
   footer {
-    bottom: calc(50 * var(--layout-unit));
+    bottom: 0;
     font-size: calc(12 * var(--layout-unit));
     line-height: calc(18 * var(--layout-unit));
   }
