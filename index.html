@@ -104,18 +104,24 @@
     <link rel="preload" href="assets/fonts/gambetta-medium-italic.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="assets/fonts/inter-light.woff2" as="font" type="font/woff2" crossorigin>
     <script src="assets/js/site.js?v=20261031-6" defer></script>
-    <link rel="stylesheet" href="assets/css/site.css?v=20261101-2">
+    <link rel="stylesheet" href="assets/css/site.css?v=20261113-v25-8">
   </head>
   <body>
+    <svg width="0" height="0" aria-hidden="true" class="ink-filter">
+      <filter id="illustration-ink">
+        <feFlood />
+        <feComposite in2="SourceAlpha" operator="in" />
+      </filter>
+    </svg>
     <a class="skip-link" href="#histoire">Aller au contenu</a>
     <nav aria-label="Navigation principale">
       <a href="#accueil">Accueil</a><a href="#histoire">Notre histoire</a><a href="#marches">Les marchés</a><a href="#contact">Contact</a>
     </nav>
     <header id="accueil">
-      <div class="illustration illustration-brand" aria-hidden="true">
-        <img draggable="false" src="assets/illustrations/corbeau-renard.svg" alt="">
-      </div>
       <div class="brand">
+        <div class="illustration illustration-brand" aria-hidden="true">
+          <img src="assets/illustrations/fromage.svg" alt="" draggable="false">
+        </div>
         <h1>Crouzet<span class="sr-only">, crèmerie et fromagerie sur les marchés des Landes</span></h1>
         <p>Crèmerie Fromagerie - depuis 2001</p>
       </div>
@@ -123,32 +129,21 @@
     <main>
       <section id="histoire" class="history" aria-labelledby="history-title">
         <div class="illustration illustration-crow" aria-hidden="true">
-          <picture>
-            <source media="(max-width:760px)" srcset="assets/illustrations/corbeau-mobile.svg">
-            <img draggable="false" src="assets/illustrations/corbeau.svg" alt="">
-          </picture>
+          <img src="assets/illustrations/corbeau.svg" alt="" draggable="false">
         </div>
         <h2 id="history-title"><i class="heading-line" aria-hidden="true"></i><span>01</span><span class="heading-text">Notre histoire,</span></h2>
         <div class="history-content">
           <figure>
             <div class="image-window">
-              <picture>
-                <source media="(min-width:761px)"
-                  srcset="assets/images/histoire-desktop-459.webp 459w, assets/images/histoire-desktop-918.webp 918w"
-                  sizes="32vw">
-                <img draggable="false" src="assets/images/histoire-mobile-560.webp"
-                  srcset="assets/images/histoire-mobile-400.webp 400w, assets/images/histoire-mobile-560.webp 560w, assets/images/histoire-mobile-1080.webp 1080w"
-                  sizes="46.16vw" width="459" height="603" loading="lazy" alt="Préparation de fromage frais au camion Crouzet">
-              </picture>
-            </div>
+              <img draggable="false" src="assets/images/histoire-mobile-560.webp" srcset="assets/images/histoire-mobile-400.webp 400w, assets/images/histoire-mobile-560.webp 560w, assets/images/histoire-mobile-1080.webp 1080w" sizes="46.16vw" width="459" height="603" loading="lazy" alt="Préparation de fromage frais au camion Crouzet">            </div>
           </figure>
-          <p>Depuis plus de quinze ans,<br class="mobile-break"> <strong>Olivier et Rose</strong> sélectionnent<br class="desktop-break mobile-break"> <em>des fromages de caractère</em><br class="mobile-break"> au fil des saisons et<br class="desktop-break mobile-break"> <em>composent vos plateaux</em><br class="mobile-break"> selon vos envies.</p>
+          <p>Depuis plus de quinze ans,<br class="mobile-break"> <strong>Olivier et Rose</strong> sélectionnent<br class="mobile-break"> <em>des fromages de caractère</em><br class="mobile-break"> au fil des saisons et<br class="mobile-break"> <em>composent vos plateaux</em><br class="mobile-break"> selon vos envies.</p>
         </div>
       </section>
       <section id="marches" class="markets" aria-labelledby="markets-title">
         <h2 id="markets-title"><i class="heading-line" aria-hidden="true"></i><span>02</span><span class="heading-text">Les marchés,</span></h2>
         <div class="illustration illustration-fox" aria-hidden="true">
-          <img draggable="false" src="assets/illustrations/renard.svg" alt="">
+          <img src="assets/illustrations/renard.svg" alt="" draggable="false">
         </div>
         <table>
           <colgroup>
@@ -174,25 +169,17 @@
         </div>
       </section>
       <section id="contact" class="contact" aria-labelledby="contact-title">
-        <div class="illustration illustration-cheese" aria-hidden="true">
-          <img draggable="false" src="assets/illustrations/fromage.svg" alt="">
-        </div>
         <h2 id="contact-title"><i class="heading-line" aria-hidden="true"></i><span>03</span><span class="heading-text">Contact,</span></h2>
-        <div class="contact-content">
-          <p>Une question ? <strong>Écrivez-nous</strong> à <a href="mailto:lepalaisdufromage@orange.fr"><em>lepalaisdufromage@orange.fr</em></a> ou par téléphone au<br class="mobile-break"> <a href="tel:+33685920299"><em>06.85.92.02.99</em></a>.</p>
-        </div>
-        <figure class="contact-photo">
-          <div class="image-window">
-            <picture>
-              <source media="(max-width:760px)"
-                srcset="assets/images/contact-mobile-330.webp 330w, assets/images/contact-mobile-660.webp 660w"
-                sizes="46.16vw">
-              <img draggable="false" src="assets/images/contact-desktop-440.webp"
-                srcset="assets/images/contact-desktop-440.webp 440w, assets/images/contact-desktop-880.webp 880w"
-                sizes="31vw" width="440" height="602" loading="lazy" alt="Découpe de beurre à la crèmerie Crouzet">
-            </picture>
+        <div class="contact-body">
+          <div class="contact-content">
+            <p>Une question ? <strong>Écrivez-nous</strong> à <a href="mailto:lepalaisdufromage@orange.fr"><em>lepalaisdufromage@orange.fr</em></a> ou par téléphone au<br class="mobile-break"> <a href="tel:+33685920299"><em>06.85.92.02.99</em></a>.</p>
           </div>
-        </figure>
+          <figure class="contact-photo">
+            <div class="image-window">
+              <img draggable="false" src="assets/images/contact.webp" width="482" height="603" loading="lazy" alt="Beurre de la crèmerie Crouzet dans sa baratte">
+            </div>
+          </figure>
+        </div>
       </section>
       <footer><a class="footer-link" href="#mentions-legales" aria-haspopup="dialog" aria-controls="mentions-legales">Mentions légales</a>
       </footer>

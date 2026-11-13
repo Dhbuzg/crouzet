@@ -1,3 +1,5 @@
+.ink-filter feFlood { flood-color: #2b4a31; }
+
 /* Figma 404 / Version_03: the same 1440 x 900 composition as the homepage. */
 html.error-document {
   height:100%;
@@ -8,7 +10,7 @@ body.error-page {
   height:100svh;
   min-height:0;
   overflow:hidden;
-  --error-unit:var(--layout-unit)
+  --error-unit:min(1px, calc(100vw / 1440), calc((100svh - 140px) / 900))
 }
 
 .error-page .error-content {
@@ -29,6 +31,7 @@ body.error-page {
   width:100%;
   height:calc(730.19525 * var(--error-unit));
   opacity:.1;
+  transform:none;
   filter:url('#brand-texture')
 }
 

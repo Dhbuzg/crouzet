@@ -81,12 +81,12 @@
 /* Shared foundations. Layout coordinates follow the supplied Figma frames. */
 :root {
   --cream: #f7f9fc;
-  --olive: #2b4a31;
+  --olive: #004d13;
   --rule-thickness: 1px;
   --rule-color: var(--olive);
   --nav-height: 75px;
   --heading-gap: calc(20 * var(--layout-unit));
-  --layout-unit: min(1px, calc(var(--usable-viewport-width, 100vw) / 1440), calc((100svh - 140px) / 900));
+  --layout-unit: min(1px, calc(var(--usable-viewport-width, 100vw) / 1440));
   --block-height: calc(800 * var(--layout-unit));
   --block-gap: calc(200 * var(--layout-unit));
   --section-offset: calc(150 * var(--layout-unit));
@@ -169,7 +169,7 @@ main, header {
   isolation: isolate;
   margin: auto;
   width: 100%;
-  max-width: calc(1440 * var(--layout-unit));
+  max-width: 1440px;
 }
 
 .image-window {
@@ -214,9 +214,9 @@ body>nav {
   grid-template-columns: repeat(4, 1fr);
   gap: calc(20 * var(--layout-unit));
   width: 100%;
-  max-width: calc(1440 * var(--layout-unit));
+  max-width: 1440px;
   height: var(--nav-height);
-  padding: 0 calc(57 * var(--layout-unit));
+  padding: 0 calc(20 * var(--layout-unit));
   align-items: center;
   text-align: center;
   background: var(--cream);
@@ -237,49 +237,47 @@ nav a {
   line-height: 30px;
 }
 
-/* Opening composition. */
+/* Version 25: centered auto-layout hero, with an independent decoration. */
 header {
-  height: calc(975 * var(--layout-unit));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(calc(450 * var(--layout-unit)), calc(100svh - var(--nav-height) - 100 * var(--layout-unit)), calc(700 * var(--layout-unit)));
+  padding-top: calc(100 * var(--layout-unit));
   margin-top: var(--nav-height);
+  margin-bottom: clamp(0px, calc(100svh - var(--nav-height) - 800 * var(--layout-unit)), var(--block-gap));
 }
 
 .brand {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(50 * var(--layout-unit));
   text-align: center;
 }
 
 h1 {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(365 * var(--layout-unit));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(170 * var(--layout-unit));
   font: italic 500 calc(250 * var(--layout-unit))/normal Gambetta, Georgia, serif;
   text-box: trim-both cap alphabetic;
 }
 
 .brand p {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: calc(580 * var(--layout-unit));
-  font: 300 calc(20 * var(--layout-unit))/1.4 Gambetta, Georgia, serif;
+  font: 300 calc(20 * var(--layout-unit))/normal Inter, Arial, sans-serif;
   text-box: trim-both cap alphabetic;
 }
 
 /* Section headings: one baseline, equal gaps, native 1 px borders. */
 main {
-  padding-top: calc(50 * var(--layout-unit));
-  padding-bottom: max(calc(275 * var(--layout-unit)), calc(100svh - var(--section-offset) - var(--block-height)));
+  padding-bottom: calc(200 * var(--layout-unit));
 }
 
 main>section {
   position: relative;
   isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  gap: calc(150 * var(--layout-unit));
   height: var(--block-height);
   min-height: 0;
   margin: 0 calc(20 * var(--layout-unit)) var(--block-gap);
@@ -295,6 +293,7 @@ h2 {
   align-items: end;
   gap: var(--heading-gap);
   height: auto;
+  flex-shrink: 0;
   font: italic 400 calc(70 * var(--layout-unit))/1.5 Newsreader, Georgia, serif;
   white-space: nowrap;
   overflow: visible;
@@ -344,44 +343,38 @@ h2>.heading-text {
   display: none;
 }
 
-.desktop-break {
-  display: initial;
-}
-
-/* History. */
-.history-content {
-  position: absolute;
-  inset: 0;
+/* Paired content follows Figma's horizontal auto-layout. */
+.history-content, .contact-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: calc(142 * var(--layout-unit));
+  height: calc(603 * var(--layout-unit));
+  flex-shrink: 0;
 }
 
 .history-content figure {
-  position: absolute;
-  left: calc(798 * var(--layout-unit));
-  top: calc(197 * var(--layout-unit));
-  width: calc(459 * var(--layout-unit));
-  height: calc(603 * var(--layout-unit));
+  order: 1;
+  flex: 0 0 calc(483 * var(--layout-unit));
+  height: 100%;
 }
 
 .history-content>p {
   text-align: center;
-  position: absolute;
-  left: calc(77 * var(--layout-unit));
-  top: calc(655.43 * var(--layout-unit));
-  transform: translateY(-100%);
   text-box: trim-both cap alphabetic;
-  width: calc(547 * var(--layout-unit));
+  width: calc(459 * var(--layout-unit));
   line-height: calc(30 * var(--layout-unit));
 }
 
 /* Weekly markets. Colgroup keeps the accessible table header from shifting columns. */
 .markets {
-  height: calc(850 * var(--layout-unit));
-  margin-bottom: calc(150 * var(--layout-unit));
+  gap: 0;
 }
 
 .markets table {
   position: absolute;
-  left: calc(478 * var(--layout-unit));
+  left: 50%;
+  transform: translateX(-50%);
   top: calc(197 * var(--layout-unit));
   width: calc(443 * var(--layout-unit));
   border-collapse: collapse;
@@ -436,7 +429,7 @@ h2>.heading-text {
 
 .market-notes {
   position: absolute;
-  left: calc(284 * var(--layout-unit));
+  left: calc(285 * var(--layout-unit));
   top: calc(800 * var(--layout-unit));
   transform: translateY(-100%);
   text-box: trim-both cap alphabetic;
@@ -447,13 +440,10 @@ h2>.heading-text {
 
 /* Contact and footer. */
 .contact-content {
+  order: 1;
   text-align: center;
-  position: absolute;
-  left: calc(995 * var(--layout-unit));
-  top: calc(475 * var(--layout-unit));
-  transform: translateY(-100%);
   text-box: trim-both cap alphabetic;
-  width: calc(405 * var(--layout-unit));
+  width: calc(459 * var(--layout-unit));
   line-height: calc(30 * var(--layout-unit));
 }
 
@@ -462,16 +452,16 @@ h2>.heading-text {
 }
 
 .contact-photo {
-  position: absolute;
-  left: calc(284 * var(--layout-unit));
-  top: calc(198 * var(--layout-unit));
-  width: calc(440 * var(--layout-unit));
-  height: calc(602 * var(--layout-unit));
+  flex: 0 0 calc(482 * var(--layout-unit));
+  height: 100%;
 }
 
 footer {
   position: absolute;
-  bottom: calc(22 * var(--layout-unit));
+  bottom: 0;
+  height: calc(75 * var(--layout-unit));
+  display: grid;
+  place-items: center;
   left: 0;
   right: 0;
   text-align: center;
@@ -497,36 +487,44 @@ footer {
   transform-origin: top left;
 }
 
+.ink-filter {
+  position: absolute;
+}
+
+.ink-filter feFlood {
+  flood-color: var(--olive);
+}
+
+.illustration img, .cursor-shape {
+  filter: url('#illustration-ink');
+}
+
 .illustration img {
   object-fit: fill;
 }
 
 .illustration-brand {
-  left: 0;
-  top: calc(85 * var(--layout-unit));
-  width: 100%;
-  height: calc(730.19525 * var(--layout-unit));
+  left: 50%;
+  top: 50%;
+  width: calc(582.184 * var(--layout-unit));
+  height: calc(526 * var(--layout-unit));
+  transform-origin: center;
+  transform: translate(-50%, -50%) rotate(-22.342857deg);
 }
 
 .illustration-crow {
-  left: calc(48 * var(--layout-unit));
-  top: calc(319 * var(--layout-unit));
-  width: calc(612.757 * var(--layout-unit));
-  height: calc(541 * var(--layout-unit));
+  left: calc(36 * var(--layout-unit));
+  top: calc(123 * var(--layout-unit));
+  width: calc(383 * var(--layout-unit));
+  height: calc(338 * var(--layout-unit));
 }
 
 .illustration-fox {
-  left: calc(125 * var(--layout-unit));
-  top: calc(271 * var(--layout-unit));
-  width: calc(1115 * var(--layout-unit));
-  height: calc(481 * var(--layout-unit));
-}
-
-.illustration-cheese {
-  left: calc(837 * var(--layout-unit));
-  top: calc(320 * var(--layout-unit));
-  width: calc(441 * var(--layout-unit));
-  height: calc(399 * var(--layout-unit));
+  right: max(calc(-532 * var(--layout-unit)), calc((100% - var(--usable-viewport-width, 100vw)) / 2));
+  top: calc(315 * var(--layout-unit));
+  width: calc(1195 * var(--layout-unit));
+  height: auto;
+  aspect-ratio: 1195 / 515;
 }
 
 /* A single SVG supplies both mouse cursor forms. */
@@ -597,7 +595,18 @@ footer {
     height: calc(350 * var(--layout-unit));
     margin: 0;
   }
+  .brand {
+    position: absolute;
+    inset: 0;
+    display: block;
+  }
   h1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     top: calc(131.6 * var(--layout-unit));
     height: calc(54.4 * var(--layout-unit));
     font-size: calc(80 * var(--layout-unit));
@@ -605,14 +614,17 @@ footer {
     text-box: normal;
   }
   .brand p {
+    position: absolute;
+    left: 0;
+    right: 0;
     top: calc(197 * var(--layout-unit));
     font-size: calc(12 * var(--layout-unit));
   }
   .illustration-brand {
-    left: calc(20 * var(--layout-unit));
-    top: calc(86 * var(--layout-unit));
-    width: calc(350 * var(--layout-unit));
-    height: calc(178 * var(--layout-unit));
+    left: 50%;
+    top: calc(175 * var(--layout-unit));
+    width: calc(210 * var(--layout-unit));
+    height: calc(189.735 * var(--layout-unit));
   }
   main {
     padding: 0;
@@ -620,6 +632,7 @@ footer {
     overflow: visible;
   }
   main>section {
+    display: block;
     margin: 0 calc(10 * var(--layout-unit)) var(--block-gap);
   }
   h2 {
@@ -648,16 +661,26 @@ footer {
   .mobile-break {
     display: initial;
   }
-  .desktop-break:not(.mobile-break) {
-    display: none;
+  .history-content {
+    position: absolute;
+    inset: 0;
+    display: block;
+    height: auto;
+    padding: 0;
+  }
+  .contact-body {
+    display: contents;
   }
   .history-content figure {
+    position: absolute;
     left: calc(190 * var(--layout-unit));
     top: calc(73 * var(--layout-unit));
     width: calc(180 * var(--layout-unit));
     height: calc(221 * var(--layout-unit));
   }
   .history-content>p {
+    position: absolute;
+    transform: translateY(-100%);
     left: 0;
     top: calc(316 * var(--layout-unit));
     width: calc(180 * var(--layout-unit));
@@ -674,6 +697,7 @@ footer {
     margin-bottom: var(--block-gap);
   }
   .markets table {
+    transform: none;
     left: calc(60 * var(--layout-unit));
     top: calc(73 * var(--layout-unit));
     width: calc(256.4 * var(--layout-unit));
@@ -716,23 +740,20 @@ footer {
     height: calc(157 * var(--layout-unit));
   }
   .contact-content {
+    position: absolute;
+    transform: translateY(-100%);
     left: calc(190 * var(--layout-unit));
     top: calc(141 * var(--layout-unit));
     width: calc(180 * var(--layout-unit));
     line-height: calc(15 * var(--layout-unit));
   }
   .contact-photo {
+    position: absolute;
     left: 0;
     right: auto;
     top: calc(126 * var(--layout-unit));
     width: calc(180 * var(--layout-unit));
     height: calc(224 * var(--layout-unit));
-  }
-  .illustration-cheese {
-    left: calc(198 * var(--layout-unit));
-    top: calc(61 * var(--layout-unit));
-    width: calc(163 * var(--layout-unit));
-    height: calc(148 * var(--layout-unit));
   }
   footer {
     bottom: calc(50 * var(--layout-unit));

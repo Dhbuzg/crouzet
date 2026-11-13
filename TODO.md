@@ -230,3 +230,11 @@ Cette intégration remplace les anciennes mentions du libellé légal inactif da
 - [x] Descendre le tableau de 50 px : écart titre-contenu de 150 px à l’échelle de référence.
 - [x] Étendre Marchés à 850 px et ajuster la marge suivante à 150 px ; conserver Contact à 3100 px et la page à 4175 px.
 - [x] Replacer le renard et la note conformément au PDF, sans modifier les coordonnées mobiles.
+
+### Version 25 — 13 novembre 2026
+- [x] Reprendre les photos, illustrations, couleur et disposition depuis la version 25 de Figma.
+- [x] Traduire les auto-layouts en conteneurs flex ; conserver la composition mobile avec les nouveaux visuels.
+- [x] Centrer le contenu et le menu avec une largeur maximale de 1440 px, vérifiée à 1920 et 2560 px.
+- [x] Comparer les captures du site aux rendus Figma ; confirmer les sections à 975, 1975 et 2975 px et la hauteur totale de 3975 px à la largeur de référence.
+- [x] Vérifier sous Chromium et Firefox les ancres, le panneau légal, le chargement des images et le redimensionnement de 320 à 1920 px.
+- [ ] Valider sur un téléphone physique.

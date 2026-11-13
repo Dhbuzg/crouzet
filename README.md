@@ -1,6 +1,6 @@
 # Crèmerie Crouzet
 
-Site statique HTML, CSS et JavaScript, sans compilation ni dépendance à installer. Un contenu commun s’adapte aux maquettes ordinateur Version_22 et mobile Version_03, avec leurs dernières corrections.
+Site statique HTML, CSS et JavaScript, sans compilation ni dépendance à installer. Un contenu commun s’adapte aux maquettes ordinateur Version_25 et mobile Version_04, avec les nouveaux visuels.
 
 ## Utiliser le projet
 
@@ -22,13 +22,13 @@ Avec Node.js installé, lancer `npm start`, puis ouvrir http://127.0.0.1:4173. A
 
 ## Modifier le site
 
-Les formats ordinateur et mobile partagent le même HTML. Le point de rupture est de 760 px. Les coordonnées suivent les maquettes Figma : sections de 1440 × 800 espacées de 200 px sur ordinateur (Version_23), sauf Marchés : hauteur de 850 px et marge suivante de 150 px, avec 150 px entre le titre et le tableau, maquette mobile de 390 × 1720 px (Version_04). L’arrivée sur les sections ordinateur utilise un offset de 150 px à l’échelle de référence. Les variables sont au début de site.css ; les adaptations mobiles et le panneau légal sont regroupés dans des sections dédiées.
+Les formats ordinateur et mobile partagent le même HTML. Le point de rupture est de 760 px. Le contenu et la navigation sont centrés dans une largeur maximale de 1440 px. La version ordinateur suit les auto-layouts de Version_25 : accueil de 700 px après le menu de 75 px, sections de 800 px, espacements de 200 px, écart titre-contenu de 150 px. À 1440 px, la page mesure 3975 px. Sous cette largeur, les dimensions diminuent proportionnellement ; elles ne dépendent plus de la hauteur de fenêtre. Les paires photo/texte utilisent un conteneur flex. Le mobile conserve sa composition de 390 × 1720 px avec les nouveaux visuels. L’arrivée sur les sections ordinateur conserve un offset de 150 px à l’échelle de référence.
 
-Modifier les textes dans index.html et les dimensions dans les règles de la section concernée. Éviter les correctifs successifs en fin de fichier. Conserver les variantes de photos référencées par picture/srcset : elles fournissent les recadrages et résolutions utiles.
+Modifier les textes dans index.html et les dimensions dans les règles de la section concernée. Éviter les correctifs successifs en fin de fichier. Les nouvelles photos sont des exports Figma optimisés en WebP. L’ancienne photo de préparation reste utilisée dans les métadonnées de partage, conformément au choix de référencement.
 
-Les SVG utilisent #2b4a31, avec 10 % d’opacité pour les fonds. Les séparateurs sont déclarés à 1 px. Les liens sont soulignés sur mobile et au survol sur ordinateur. La rubrique Plateaux est retirée. Les mentions légales sont intégrées dans index.html sous forme de panneau modal : ouverture vers le haut, défilement interne, fermeture progressive par défilement vers le haut à la limite du contenu. La section dédiée de assets/js/site.js gère cette interaction ; Échap permet aussi de fermer. La position du site est conservée derrière le panneau.
+Les six illustrations sont des silhouettes SVG noires. Le CSS règle leur couleur avec un filtre et leur opacité sur les conteneurs. Les séparateurs sont déclarés à 1 px. Les liens sont soulignés sur mobile et au survol sur ordinateur. La rubrique Plateaux est retirée. Les mentions légales sont intégrées dans index.html sous forme de panneau modal : ouverture vers le haut, défilement interne, fermeture progressive par défilement vers le haut à la limite du contenu. La section dédiée de assets/js/site.js gère cette interaction ; Échap permet aussi de fermer. La position du site est conservée derrière le panneau.
 
-Les ressources modifiées sont versionnées dans leurs références (`?v=20261031-6` pour les styles actuels). Actualiser les références concernées lors d’une publication. Pas de génération automatique d’empreintes ni de compilation.
+Les ressources modifiées sont versionnées dans leurs références (`?v=20261113-v25-2` pour les styles actuels). Actualiser les références concernées lors d’une publication. Pas de génération automatique d’empreintes ni de compilation.
 
 ## Publication et contrôles
 

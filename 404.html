@@ -9,10 +9,16 @@
     <script>if(location.protocol === "file:") document.querySelector("base").setAttribute("href", "./");</script>
     <title>Page introuvable - Crèmerie Crouzet</title>
     <link rel="icon" type="image/png" sizes="192x192" href="favicon.png?v=e5e096773419">
-    <link rel="stylesheet" href="assets/css/site.css?v=20261101-2">
-    <link rel="stylesheet" href="assets/css/404.css?v=20261027-2">
+    <link rel="stylesheet" href="assets/css/site.css?v=20261113-v25-8">
+    <link rel="stylesheet" href="assets/css/404.css?v=20261113-v25-8">
   </head>
   <body class="error-page">
+    <svg width="0" height="0" aria-hidden="true" class="ink-filter">
+      <filter id="illustration-ink">
+        <feFlood />
+        <feComposite in2="SourceAlpha" operator="in" />
+      </filter>
+    </svg>
     <svg class="illustration-filters" aria-hidden="true" width="0" height="0" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter id="brand-texture" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
@@ -23,7 +29,7 @@
     </svg>
     <main class="error-content">
       <div class="illustration illustration-brand error-illustration" aria-hidden="true">
-        <img draggable="false" src="assets/illustrations/corbeau-renard.svg" alt="">
+        <img src="assets/illustrations/corbeau-renard-fromage.svg" alt="" draggable="false">
       </div>
       <h1><span class="sr-only">Erreur </span>404</h1>
       <p class="error-message">Oops, cette page n’existe pas!</p>
